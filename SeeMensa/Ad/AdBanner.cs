@@ -30,12 +30,20 @@ namespace SeeMensa.Ad
             _browser.Loaded += new RoutedEventHandler(browser_Loaded);
             _browser.IsScriptEnabled = true;
             _browser.Navigating += browser_Navigating;
+            _browser.ScriptNotify += _browser_ScriptNotify;
             _bannerUri = bannerUri;
 
             if (NetworkInterface.GetIsNetworkAvailable())
             {
-                _browser.Visibility = Visibility.Visible;
                 _browser.Navigate(_bannerUri);
+            }
+        }
+
+        void _browser_ScriptNotify(object sender, NotifyEventArgs e)
+        {
+            if (e.Value.Equals("loaded"))
+            {
+                _browser.Visibility = Visibility.Visible;
             }
         }
 
