@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SeeMensa.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:language="clr-namespace:SeeMensa.Language"
+    xmlns:local="clr-namespace:SeeMensa"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:c="clr-namespace:TileClickEffect;assembly=TileClickEffect"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn" />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut" />
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    <phone:PhoneApplicationPage.Resources>
+        <!-- Language -->
+        <language:LocalizedStrings x:Key="LocalizedString"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.Projection>
+            <PlaneProjection/>
+        </Grid.Projection>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0">
+            <TextBlock x:Name="PageTitle" Text="{Binding Path=LocalizedString.SettingsTitle,Source={StaticResource LocalizedString}}" Margin="12,-10,0,0" FontSize="74" FontFamily="{StaticResource PhoneFontFamilySemiBold}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,30,12,0">
+            <StackPanel Margin="10,0,0,0">
+                <TextBlock Text="{Binding Path=LocalizedString.Canteen,Source={StaticResource LocalizedString}}" FontSize="26"/>
+                <toolkit:ListPicker Grid.Row="1" Name="lpMensas" ItemsSource="{Binding MensaItems}" SelectionChanged="lpMensas_SelectionChanged" />
+                <TextBlock Text="{Binding Path=LocalizedString.Prices,Source={StaticResource LocalizedString}}" FontSize="26" Margin="0,30,0,0"/>
+                <RadioButton Content="{Binding Path=LocalizedString.Student,Source={StaticResource LocalizedString}}" Height="72" Name="rbStudent" Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Student"/>
+                <RadioButton Content="{Binding Path=LocalizedString.Guest,Source={StaticResource LocalizedString}}" Height="72" Name="rbGuest"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Guest"/>
+                <RadioButton Content="{Binding Path=LocalizedString.Employee,Source={StaticResource LocalizedString}}" Height="72" Name="rbEmployee"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Employee"/>
+                <RadioButton Content="{Binding Path=LocalizedString.Pupil,Source={StaticResource LocalizedString}}" Height="72" Name="rbPupil"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Pupil"/>
+            </StackPanel>  
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>
