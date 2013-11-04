@@ -67,14 +67,14 @@ namespace SeeMensa
                         string status = Store.CurrentApp.LicenseInformation.ProductLicenses[key].IsActive ? SeeMensa.Language.Language.StorePurchased : pListing.FormattedPrice;
 
                         string imageLink = string.Empty;
-
                         picItems.Add(
                             new ProductItem
                             {
-                                imgLink = key.Equals("ad_free") ? "/Images/ad_free.png" : "/Images/donate.png",
+                                ImgLink = key.Equals("ad_free") ? "/Images/ad_free.png" : "/Images/donate.png",
                                 Name = pListing.Name,
+                                Description = pListing.Description,
                                 Status = status,
-                                key = key,
+                                Key = key,
                                 BuyNowButtonVisible = Store.CurrentApp.LicenseInformation.ProductLicenses[key].IsActive ? System.Windows.Visibility.Collapsed : System.Windows.Visibility.Visible
                             }
                         );

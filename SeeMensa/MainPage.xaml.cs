@@ -332,11 +332,6 @@ namespace SeeMensa
             NavigationService.Navigate(new Uri("/InfoPage.xaml", UriKind.Relative));
         }
 
-        private void panMeals_Loaded(object sender, RoutedEventArgs e)
-        {
-            //SmoothInTransition.Begin();
-        }
-
         /// <summary>
         /// Loads the StudiCluster Web-Banner
         /// </summary>

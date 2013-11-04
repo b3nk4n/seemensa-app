@@ -376,6 +376,15 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buy now.
+        /// </summary>
+        public static string StoreBuy {
+            get {
+                return ResourceManager.GetString("StoreBuy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to purchased.
         /// </summary>
         public static string StorePurchased {

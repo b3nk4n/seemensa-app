@@ -64,11 +64,14 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Margin="0,30,0,0">
-                                        <TextBlock Foreground="white" FontWeight="ExtraBold" Text="{Binding Name}" />
-                                        <TextBlock Foreground="white" FontWeight="Normal" Text="{Binding Status}" />
-                                        <Button Content="Buy Now" Visibility="{Binding BuyNowButtonVisible}" Click="ButtonBuyNow_Clicked" Tag="{Binding key}" />
+                                    <Image Margin="4" Source="{Binding ImgLink}" Width="173" Height="173"/>
+                                    <StackPanel Grid.Column="1" Margin="10,28,0,0">
+                                        <TextBlock FontWeight="ExtraBold" Text="{Binding Name}" />
+                                        <TextBlock FontWeight="Normal" Text="{Binding Description}" TextWrapping="Wrap" />
+                                        <TextBlock FontWeight="Bold" Text="{Binding Status}" />
+                                        <Button Content="{Binding Path=LocalizedString.StoreBuy,Source={StaticResource LocalizedString}}" Visibility="{Binding BuyNowButtonVisible}" Click="ButtonBuyNow_Clicked" Tag="{Binding Key}" />
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>

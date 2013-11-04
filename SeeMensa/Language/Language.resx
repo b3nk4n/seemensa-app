@@ -257,6 +257,10 @@
     <value>Settings</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="StoreBuy" xml:space="preserve">
+    <value>Buy now</value>
+    <comment>InAppStorePage</comment>
+  </data>
   <data name="StorePurchased" xml:space="preserve">
     <value>purchased</value>
     <comment>InAppStorePage</comment>
