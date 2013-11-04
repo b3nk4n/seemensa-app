@@ -81,7 +81,7 @@
 
             </StackPanel>
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <TextBlock Text="Copyright © 2012" TextAlignment="Center"/>
+                <TextBlock Text="Copyright © 2013" TextAlignment="Center"/>
                 <TextBlock Text="by" TextAlignment="Center"/>
                 <TextBlock Text="Benjamin Sautermeister" TextAlignment="Center"/>
                 <TextBlock Text="Patrick Mutter " TextAlignment="Center"/>

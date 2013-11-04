@@ -349,7 +349,11 @@ namespace SeeMensa
             {
                 // load advertisment
                 AdBanner adBanner = new AdBanner(WebBanner,
-                    new Uri("http://bsautermeister.de/seemensa/advertising/seemensa_sc.html"));
+                    new Uri("http://bsautermeister.de/seemensa/advertising/seemensa_sc.html"),
+                    () => {
+                        WebBanner.Visibility = System.Windows.Visibility.Visible;
+                        AdInTransition.Begin();
+                    });
                 adBanner.ScrollDisabled = true;
             }
         }

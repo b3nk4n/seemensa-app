@@ -39,6 +39,9 @@
         <!-- Converters -->
         <converters:DayConverter x:Key="dayConverter"/>
         <converters:DateConverter x:Key="dateConverter"/>
+        <Storyboard x:Name="AdInTransition">
+        	<DoubleAnimation Duration="0:0:0.5" To="75" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="WebBanner" d:IsOptimized="True"/>
+        </Storyboard>
     </phone:PhoneApplicationPage.Resources>
 
     <!--Data context is set to sample data above and LayoutRoot contains the root grid where all other page content is placed-->
@@ -53,7 +56,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0">
-            <phone:WebBrowser x:Name="WebBanner" Width="480" Height="75" Visibility="Collapsed"/>
+            <phone:WebBrowser x:Name="WebBanner" Width="480" Height="0"/>
         </StackPanel>
         
         <!--ContentPanel contains ListBox and ListBox ItemTemplate. Place additional content here-->

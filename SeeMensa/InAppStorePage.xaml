@@ -56,15 +56,15 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,30,12,0">
-            <ScrollViewer HorizontalAlignment="Left" Margin="12,0,12,0" Grid.Row="1">
+            <ScrollViewer HorizontalAlignment="Stretch" Margin="12,0,12,0" Grid.Row="1">
                 <ItemsControl x:Name="pics">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <Grid>
+                                <Grid HorizontalAlignment="Left">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="240"/>
                                     </Grid.ColumnDefinitions>
                                     <Image Margin="4" Source="{Binding ImgLink}" Width="173" Height="173"/>
                                     <StackPanel Grid.Column="1" Margin="10,28,0,0">

@@ -14,9 +14,20 @@ namespace SeeMensa.Ad
 {
     public class AdBanner
     {
+        /// <summary>
+        /// The banner web browser.
+        /// </summary>
         private WebBrowser _browser;
 
+        /// <summary>
+        /// The banner uri.
+        /// </summary>
         private Uri _bannerUri;
+
+        /// <summary>
+        /// The ad loaded/rendered callback.
+        /// </summary>
+        private Action _loaded;
 
         /// <summary>
         /// Gets or sets whether to suppress the scrolling of
@@ -24,7 +35,7 @@ namespace SeeMensa.Ad
         /// </summary>
         public bool ScrollDisabled { get; set; }
 
-        public AdBanner(WebBrowser browser, Uri bannerUri)
+        public AdBanner(WebBrowser browser, Uri bannerUri, Action loaded)
         {
             _browser = browser;
             _browser.Loaded += new RoutedEventHandler(browser_Loaded);
@@ -32,6 +43,7 @@ namespace SeeMensa.Ad
             _browser.Navigating += browser_Navigating;
             _browser.ScriptNotify += _browser_ScriptNotify;
             _bannerUri = bannerUri;
+            _loaded = loaded;
 
             if (NetworkInterface.GetIsNetworkAvailable())
             {
@@ -39,14 +51,23 @@ namespace SeeMensa.Ad
             }
         }
 
+        /// <summary>
+        /// Calls the add-banner-loaded callback, when the banner was rendered.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void _browser_ScriptNotify(object sender, NotifyEventArgs e)
         {
             if (e.Value.Equals("loaded"))
             {
-                _browser.Visibility = Visibility.Visible;
+                if (_loaded != null)
+                    _loaded();
             }
         }
 
+        /// <summary>
+        /// Cancels the navigation to any page except the defined banner page.
+        /// </summary>
         void browser_Navigating(object sender, NavigatingEventArgs e)
         {
             if (e.Uri != _bannerUri)
@@ -67,6 +88,9 @@ namespace SeeMensa.Ad
             border.ManipulationCompleted += Border_ManipulationCompleted;
         }
 
+        /// <summary>
+        /// Stops the zoom and scroll interaction of the browser.
+        /// </summary>
         private void Border_ManipulationCompleted(object sender,
                                                   ManipulationCompletedEventArgs e)
         {
@@ -77,6 +101,9 @@ namespace SeeMensa.Ad
                 e.Handled = true;
         }
 
+        /// <summary>
+        /// Stops the zoom and scroll interaction of the browser.
+        /// </summary>
         private void Border_ManipulationDelta(object sender,
                                               ManipulationDeltaEventArgs e)
         {
