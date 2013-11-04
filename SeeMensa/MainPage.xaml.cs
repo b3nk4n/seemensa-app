@@ -40,7 +40,7 @@ namespace SeeMensa
 
             _client = new WebClient();
 
-            //_client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(_client_DownloadStringCompleted);
+            _client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(_client_DownloadStringCompleted);
 
             this.localizeAppBar();
 
@@ -153,24 +153,8 @@ namespace SeeMensa
                 // Start system tray progress bar
                 StartSystemTrayProgressBar();
                 
-                //_client.DownloadStringAsync(uri);
-                string data = await DownloadString(uri);
-                handleDownloadStringCompleted(data);
+                _client.DownloadStringAsync(uri);
             }
-        }
-
-        public static Task<string> DownloadString(Uri url)
-        {
-            var tcs = new TaskCompletionSource<string>();
-            var wc = new WebClient();
-            wc.DownloadStringCompleted += (s, e) =>
-            {
-                if (e.Error != null) tcs.TrySetException(e.Error);
-                else if (e.Cancelled) tcs.TrySetCanceled();
-                else tcs.TrySetResult(e.Result);
-            };
-            wc.DownloadStringAsync(url);
-            return tcs.Task;
         }
 
         /// <summary>
@@ -239,24 +223,6 @@ namespace SeeMensa
                                 SeeMensa.Language.Language.MessageBoxAttention,
                                 MessageBoxButton.OK);
             }
-
-            // Stop system tray progress bar
-            StopSystemTrayProgressBar();
-
-            this.updateAppBar();
-        }
-
-        void handleDownloadStringCompleted(string data)
-        {
-
-            // Replace Euro-Symbols
-            string xml = data.Replace((char)128, '€');
-
-            this.updatePanaroamaControl(xml);
-
-            this.DataContext = App.ViewModel;
-
-            App.ViewModel.LastUpdate = DateTime.Now;
 
             // Stop system tray progress bar
             StopSystemTrayProgressBar();
