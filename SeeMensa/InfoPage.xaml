@@ -16,7 +16,8 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+    shell:SystemTray.IsVisible="True">
+    
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
@@ -37,6 +38,7 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
+    
     <phone:PhoneApplicationPage.Resources>
         <!-- Language -->
         <language:LocalizedStrings x:Key="LocalizedString"/>
@@ -47,29 +49,27 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.Projection>
-            <PlaneProjection/>
-        </Grid.Projection>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0">
-            <TextBlock x:Name="PageTitle" Text="{Binding Path=LocalizedString.MensaInfoTitle,Source={StaticResource LocalizedString}}" Margin="12,-10,0,0" FontSize="74" FontFamily="{StaticResource PhoneFontFamilySemiBold}"/>
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="{Binding Path=LocalizedString.MensaInfoTitle,Source={StaticResource LocalizedString}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,30,12,0">
-            <StackPanel Margin="10,0,0,0">
-                <TextBlock Text="{Binding CurrentMensaName}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="40" Foreground="{StaticResource PhoneAccentBrush}" TextWrapping="Wrap"/>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel>
+                <TextBlock Text="{Binding CurrentMensaName}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextWrapping="Wrap"/>
                 
-                <StackPanel Margin="0,25,0,0" DataContext="{Binding CurrentMensaItem}">
-                    <TextBlock Text="{Binding Path=LocalizedString.Address,Source={StaticResource LocalizedString}}" FontSize="26"/>
-                    <StackPanel Margin="20,0,0,0">                        
-                        <TextBlock Text="{Binding Address1}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="26" TextWrapping="Wrap"/>
-                        <TextBlock Text="{Binding Address2}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="26" TextWrapping="Wrap"/>
+                <StackPanel Margin="0,35,0,0" DataContext="{Binding CurrentMensaItem}">
+                    <TextBlock Text="{Binding Path=LocalizedString.Address,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                    <StackPanel Margin="0,10,0,0">
+                        <TextBlock Text="{Binding Address1}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Address2}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

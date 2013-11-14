@@ -108,26 +108,6 @@ namespace SeeMensa
         }
 
         /// <summary>
-        /// When the Back-Key was pressed, go back with transition
-        /// </summary>
-        private void PhoneApplicationPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            // Cancel the default navigation
-            e.Cancel = true;
-
-            goBack();
-        }
-
-        /// <summary>
-        /// Goes back to the last page with transition
-        /// </summary>
-        private void goBack()
-        {
-            PhoneApplicationFrame root = (PhoneApplicationFrame)Application.Current.RootVisual;
-            root.GoBack();
-        }
-
-        /// <summary>
         /// Change the price type, if the selection of the RadioButtons has changed.
         /// </summary>
         private void PriceChecked(object sender, RoutedEventArgs e)

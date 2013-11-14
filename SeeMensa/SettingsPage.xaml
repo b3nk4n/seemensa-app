@@ -16,7 +16,8 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+    shell:SystemTray.IsVisible="True">
+    
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
@@ -37,6 +38,7 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
+    
     <phone:PhoneApplicationPage.Resources>
         <!-- Language -->
         <language:LocalizedStrings x:Key="LocalizedString"/>
@@ -44,25 +46,23 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.Projection>
-            <PlaneProjection/>
-        </Grid.Projection>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0">
-            <TextBlock x:Name="PageTitle" Text="{Binding Path=LocalizedString.SettingsTitle,Source={StaticResource LocalizedString}}" Margin="12,-10,0,0" FontSize="74" FontFamily="{StaticResource PhoneFontFamilySemiBold}"/>
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="{Binding Path=LocalizedString.SettingsTitle,Source={StaticResource LocalizedString}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,30,12,0">
-            <StackPanel Margin="10,0,0,0">
-                <TextBlock Text="{Binding Path=LocalizedString.Canteen,Source={StaticResource LocalizedString}}" FontSize="26"/>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel >
+                <TextBlock Margin="12,0,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=LocalizedString.Canteen,Source={StaticResource LocalizedString}}" />
                 <toolkit:ListPicker Grid.Row="1" Name="lpMensas" ItemsSource="{Binding MensaItems}" SelectionChanged="lpMensas_SelectionChanged" />
-                <TextBlock Text="{Binding Path=LocalizedString.Prices,Source={StaticResource LocalizedString}}" FontSize="26" Margin="0,30,0,0"/>
+                <TextBlock Margin="12,30,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=LocalizedString.Prices,Source={StaticResource LocalizedString}}"/>
                 <RadioButton Content="{Binding Path=LocalizedString.Student,Source={StaticResource LocalizedString}}" Height="72" Name="rbStudent" Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Student"/>
                 <RadioButton Content="{Binding Path=LocalizedString.Guest,Source={StaticResource LocalizedString}}" Height="72" Name="rbGuest"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Guest"/>
                 <RadioButton Content="{Binding Path=LocalizedString.Employee,Source={StaticResource LocalizedString}}" Height="72" Name="rbEmployee"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Employee"/>

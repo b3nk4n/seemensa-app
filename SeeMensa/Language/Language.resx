@@ -122,7 +122,7 @@
     <comment>AboutPage</comment>
   </data>
   <data name="Address" xml:space="preserve">
-    <value>Address:</value>
+    <value>Address</value>
     <comment>InfoPage</comment>
   </data>
   <data name="AppBarMensaInfo" xml:space="preserve">
@@ -150,7 +150,7 @@
     <comment>Global</comment>
   </data>
   <data name="Canteen" xml:space="preserve">
-    <value>Canteen:</value>
+    <value>Canteen</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Email" xml:space="preserve">
@@ -249,12 +249,8 @@
     <value>more apps</value>
     <comment>AboutPage</comment>
   </data>
-  <data name="Openings" xml:space="preserve">
-    <value>Opening hours:</value>
-    <comment>InfoPage</comment>
-  </data>
   <data name="Prices" xml:space="preserve">
-    <value>Prices:</value>
+    <value>Prices</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">

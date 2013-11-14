@@ -70,7 +70,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address:.
+        ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string Address {
             get {
@@ -133,7 +133,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Canteen:.
+        ///   Looks up a localized string similar to Canteen.
         /// </summary>
         public static string Canteen {
             get {
@@ -358,16 +358,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opening hours:.
-        /// </summary>
-        public static string Openings {
-            get {
-                return ResourceManager.GetString("Openings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prices:.
+        ///   Looks up a localized string similar to Prices.
         /// </summary>
         public static string Prices {
             get {
