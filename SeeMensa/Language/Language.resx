@@ -118,44 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutTitle" xml:space="preserve">
-    <value>About seeMENSA</value>
+    <value>About</value>
     <comment>AboutPage</comment>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Address:</value>
     <comment>InfoPage</comment>
   </data>
-  <data name="AppBarAbout" xml:space="preserve">
-    <value>About seeMENSA</value>
-    <comment>MainPage</comment>
-  </data>
-  <data name="AppBarHelp" xml:space="preserve">
-    <value>Help</value>
-    <comment>MainPage</comment>
-  </data>
   <data name="AppBarMensaInfo" xml:space="preserve">
     <value>canteen</value>
     <comment>MainPage</comment>
-  </data>
-  <data name="AppBarMore" xml:space="preserve">
-    <value>More apps</value>
-    <comment>AppBar</comment>
   </data>
   <data name="AppBarRefresh" xml:space="preserve">
     <value>refresh</value>
     <comment>MainPage</comment>
   </data>
-  <data name="AppBarSettings" xml:space="preserve">
-    <value>settings</value>
-    <comment>MainPage</comment>
-  </data>
-  <data name="AppBarStore" xml:space="preserve">
-    <value>In-App Store</value>
-    <comment>MainPage</comment>
-  </data>
   <data name="AppBarWin8" xml:space="preserve">
     <value>seeMENSA for Windows 8</value>
     <comment>AppBar</comment>
+  </data>
+  <data name="ApplicationAuthor" xml:space="preserve">
+    <value>by B. Sautermeister &amp; P. Mutter</value>
+    <comment>AboutPage</comment>
+  </data>
+  <data name="ApplicationDescription" xml:space="preserve">
+    <value>seeMENSA gives you the opportunity to view the current meals of your canteen around Lake Constance.</value>
+    <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
     <value>seeMENSA</value>
@@ -257,6 +245,10 @@
     <value>There are currently no in-app purchases available. Please try again later.</value>
     <comment>InAppStorePage</comment>
   </data>
+  <data name="MoreApps" xml:space="preserve">
+    <value>more apps</value>
+    <comment>AboutPage</comment>
+  </data>
   <data name="Openings" xml:space="preserve">
     <value>Opening hours:</value>
     <comment>InfoPage</comment>
@@ -265,9 +257,17 @@
     <value>Prices:</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="PrivacyInfo" xml:space="preserve">
+    <value>privacy info</value>
+    <comment>About Page</comment>
+  </data>
   <data name="Pupil" xml:space="preserve">
     <value>Pupil</value>
     <comment>SettingsPage</comment>
+  </data>
+  <data name="RateAndReview" xml:space="preserve">
+    <value>rate and review</value>
+    <comment>AboutPage</comment>
   </data>
   <data name="Review" xml:space="preserve">
     <value>Please tap here to review this App!</value>
@@ -280,6 +280,10 @@
   <data name="Student" xml:space="preserve">
     <value>Student</value>
     <comment>SettingsPage</comment>
+  </data>
+  <data name="SupportAndFeedback" xml:space="preserve">
+    <value>support and feedback</value>
+    <comment>About Page</comment>
   </data>
   <data name="UpdateStatusText" xml:space="preserve">
     <value>updating...</value>

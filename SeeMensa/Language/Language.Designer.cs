@@ -61,7 +61,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About seeMENSA.
+        ///   Looks up a localized string similar to About.
         /// </summary>
         public static string AboutTitle {
             get {
@@ -79,38 +79,11 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About seeMENSA.
-        /// </summary>
-        public static string AppBarAbout {
-            get {
-                return ResourceManager.GetString("AppBarAbout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Help.
-        /// </summary>
-        public static string AppBarHelp {
-            get {
-                return ResourceManager.GetString("AppBarHelp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to canteen.
         /// </summary>
         public static string AppBarMensaInfo {
             get {
                 return ResourceManager.GetString("AppBarMensaInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to More apps.
-        /// </summary>
-        public static string AppBarMore {
-            get {
-                return ResourceManager.GetString("AppBarMore", resourceCulture);
             }
         }
         
@@ -124,29 +97,29 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to settings.
-        /// </summary>
-        public static string AppBarSettings {
-            get {
-                return ResourceManager.GetString("AppBarSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to In-App Store.
-        /// </summary>
-        public static string AppBarStore {
-            get {
-                return ResourceManager.GetString("AppBarStore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to seeMENSA for Windows 8.
         /// </summary>
         public static string AppBarWin8 {
             get {
                 return ResourceManager.GetString("AppBarWin8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to by B. Sautermeister &amp; P. Mutter.
+        /// </summary>
+        public static string ApplicationAuthor {
+            get {
+                return ResourceManager.GetString("ApplicationAuthor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seeMENSA gives you the opportunity to view the current meals of your canteen around Lake Constance..
+        /// </summary>
+        public static string ApplicationDescription {
+            get {
+                return ResourceManager.GetString("ApplicationDescription", resourceCulture);
             }
         }
         
@@ -376,6 +349,15 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to more apps.
+        /// </summary>
+        public static string MoreApps {
+            get {
+                return ResourceManager.GetString("MoreApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Opening hours:.
         /// </summary>
         public static string Openings {
@@ -394,11 +376,29 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to privacy info.
+        /// </summary>
+        public static string PrivacyInfo {
+            get {
+                return ResourceManager.GetString("PrivacyInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pupil.
         /// </summary>
         public static string Pupil {
             get {
                 return ResourceManager.GetString("Pupil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rate and review.
+        /// </summary>
+        public static string RateAndReview {
+            get {
+                return ResourceManager.GetString("RateAndReview", resourceCulture);
             }
         }
         
@@ -426,6 +426,15 @@ namespace SeeMensa.Language {
         public static string Student {
             get {
                 return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to support and feedback.
+        /// </summary>
+        public static string SupportAndFeedback {
+            get {
+                return ResourceManager.GetString("SupportAndFeedback", resourceCulture);
             }
         }
         

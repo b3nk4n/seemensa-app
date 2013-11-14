@@ -120,10 +120,8 @@
             <shell:ApplicationBarIconButton x:Name="abiInfo" IconUri="/Images/appbar.feature.info.rest.png" Text="mena info" Click="abiInfo_Click"></shell:ApplicationBarIconButton>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="abmStore" Text="In-App Store" Click="abmStore_Click"></shell:ApplicationBarMenuItem>
-                <shell:ApplicationBarMenuItem x:Name="abmAbout" Text="About seeMENSA" Click="abmAbout_Click"></shell:ApplicationBarMenuItem>
-                <shell:ApplicationBarMenuItem x:Name="abmMore" Text="More apps" Click="abmMore_Click"></shell:ApplicationBarMenuItem>
                 <shell:ApplicationBarMenuItem x:Name="abmWin8" Text="seeMENSA for Windows 8" Click="abmWin8_Click"></shell:ApplicationBarMenuItem>
-                <shell:ApplicationBarMenuItem x:Name="abmHelp" Text="Help" Click="abmHelp_Click"></shell:ApplicationBarMenuItem>
+                <shell:ApplicationBarMenuItem x:Name="abmAbout" Text="About seeMENSA" Click="abmAbout_Click"></shell:ApplicationBarMenuItem>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

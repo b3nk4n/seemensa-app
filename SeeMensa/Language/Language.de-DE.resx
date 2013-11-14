@@ -118,44 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutTitle" xml:space="preserve">
-    <value>Über seeMENSA</value>
+    <value>Hilfe</value>
     <comment>AboutPage</comment>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Adresse:</value>
     <comment>InfoPage</comment>
   </data>
-  <data name="AppBarAbout" xml:space="preserve">
-    <value>Über seeMENSA</value>
-    <comment>MainPage</comment>
-  </data>
-  <data name="AppBarHelp" xml:space="preserve">
-    <value>Hilfe</value>
-    <comment>MainPage</comment>
-  </data>
   <data name="AppBarMensaInfo" xml:space="preserve">
     <value>mensa</value>
     <comment>MainPage</comment>
-  </data>
-  <data name="AppBarMore" xml:space="preserve">
-    <value>Mehr apps</value>
-    <comment>AppBar</comment>
   </data>
   <data name="AppBarRefresh" xml:space="preserve">
     <value>aktual.</value>
     <comment>MainPage</comment>
   </data>
-  <data name="AppBarSettings" xml:space="preserve">
-    <value>einstl.</value>
-    <comment>MainPage</comment>
-  </data>
-  <data name="AppBarStore" xml:space="preserve">
-    <value>In-App Käufe</value>
-    <comment>MainPage</comment>
-  </data>
   <data name="AppBarWin8" xml:space="preserve">
     <value>seeMENSA für Windows 8</value>
     <comment>AppBar</comment>
+  </data>
+  <data name="ApplicationAuthor" xml:space="preserve">
+    <value>von B. Sautermeister &amp; P. Mutter</value>
+    <comment>AboutPage</comment>
+  </data>
+  <data name="ApplicationDescription" xml:space="preserve">
+    <value>seeMENSA bietet euch die Möglichkeit, schnell und einfach auf die aktuellen Speisepläne eurer Mensa rund um den Bodensee zuzugreifen.</value>
+    <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
     <value>seeMENSA</value>
@@ -257,6 +245,10 @@
     <value>Aktuell stehen keine In-App Käufe zur Verfügung. Bitte versuchen Sie es später noch einmal.</value>
     <comment>InAppStorePage</comment>
   </data>
+  <data name="MoreApps" xml:space="preserve">
+    <value>mehr apps</value>
+    <comment>AboutPage</comment>
+  </data>
   <data name="Openings" xml:space="preserve">
     <value>Öffnungszeiten:</value>
     <comment>InfoPage</comment>
@@ -265,9 +257,17 @@
     <value>Preise:</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="PrivacyInfo" xml:space="preserve">
+    <value>datenschutzinformationen</value>
+    <comment>About Page</comment>
+  </data>
   <data name="Pupil" xml:space="preserve">
     <value>Schüler</value>
     <comment>SettingsPage</comment>
+  </data>
+  <data name="RateAndReview" xml:space="preserve">
+    <value>bewerten</value>
+    <comment>AboutPage</comment>
   </data>
   <data name="Review" xml:space="preserve">
     <value>Bitte hier tippen um um diese App zu bewerten!</value>
@@ -280,6 +280,10 @@
   <data name="Student" xml:space="preserve">
     <value>Student</value>
     <comment>SettingsPage</comment>
+  </data>
+  <data name="SupportAndFeedback" xml:space="preserve">
+    <value>hilfe und feedback</value>
+    <comment>About Page</comment>
   </data>
   <data name="UpdateStatusText" xml:space="preserve">
     <value>aktualisiere...</value>

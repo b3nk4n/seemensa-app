@@ -7,35 +7,38 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:language="clr-namespace:SeeMensa.Language"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:c="clr-namespace:TileClickEffect;assembly=TileClickEffect"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:framework="clr-namespace:PhoneKit.Framework.Controls;assembly=PhoneKit.Framework"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+    shell:SystemTray.IsVisible="True">
+
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
-                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
             </toolkit:NavigationInTransition.Backward>
             <toolkit:NavigationInTransition.Forward>
-                <toolkit:SlideTransition Mode="SlideUpFadeIn" />
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
             </toolkit:NavigationInTransition.Forward>
         </toolkit:NavigationInTransition>
     </toolkit:TransitionService.NavigationInTransition>
     <toolkit:TransitionService.NavigationOutTransition>
         <toolkit:NavigationOutTransition>
             <toolkit:NavigationOutTransition.Backward>
-                <toolkit:SlideTransition Mode="SlideDownFadeOut" />
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
             </toolkit:NavigationOutTransition.Backward>
             <toolkit:NavigationOutTransition.Forward>
-                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
+
     <phone:PhoneApplicationPage.Resources>
         <!-- Language -->
         <language:LocalizedStrings x:Key="LocalizedString"/>
@@ -43,49 +46,27 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.Projection>
-            <PlaneProjection/>
-        </Grid.Projection>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0">
-            <TextBlock x:Name="PageTitle" Text="{Binding Path=LocalizedString.AboutTitle,Source={StaticResource LocalizedString}}" Margin="12,-10,0,0" FontSize="74" FontFamily="{StaticResource PhoneFontFamilySemiBold}"/>
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="{Binding Path=LocalizedString.AboutTitle,Source={StaticResource LocalizedString}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,30,12,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="250"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <!--<Border Background="{StaticResource PhoneAccentBrush}" Width="173" Height="173" Margin="10">
-                    <Image Source="Images/seeMENSA.png"/>
-                </Border>-->
-                <toolkit:HubTile
-                        Margin="10"
-                        Source="Images/seeMENSA_grey.png"
-                        Title="seeMENSA"
-                        Message="{Binding Path=LocalizedString.Review,Source={StaticResource LocalizedString}}"
-                        GroupTag="Food" Tap="HubTile_Tap">
-                </toolkit:HubTile>
-                <TextBlock Text="{Binding Path=LocalizedString.ForWindowsPhone7,Source={StaticResource LocalizedString}}" TextAlignment="Center" FontSize="26"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding Path=LocalizedString.Version,Source={StaticResource LocalizedString}}" FontSize="26"/>
-                    <TextBlock x:Name="tbVersion" Text="???" Margin="10,0,0,0" FontSize="26"/>
-                </StackPanel>
-
-            </StackPanel>
-            <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <TextBlock Text="Copyright © 2013" TextAlignment="Center"/>
-                <TextBlock Text="by" TextAlignment="Center"/>
-                <TextBlock Text="Benjamin Sautermeister" TextAlignment="Center"/>
-                <TextBlock Text="Patrick Mutter " TextAlignment="Center"/>
-            </StackPanel>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <framework:AboutControl ApplicationIconSource="/ApplicationIcon.png"
+                ApplicationTitle="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}"
+                ApplicationAuthor="{Binding Path=LocalizedString.ApplicationAuthor,Source={StaticResource LocalizedString}}"
+                ApplicationDescription ="{Binding Path=LocalizedString.ApplicationDescription,Source={StaticResource LocalizedString}}"
+                SupportAndFeedbackText="{Binding Path=LocalizedString.SupportAndFeedback,Source={StaticResource LocalizedString}}" SupportAndFeedbackEmail="apps@bsautermeister.de"
+                PrivacyInfoText="{Binding Path=LocalizedString.PrivacyInfo,Source={StaticResource LocalizedString}}" PrivacyInfoLink="http://bsautermeister.de/privacy.php"
+                RateAndReviewText="{Binding Path=LocalizedString.RateAndReview,Source={StaticResource LocalizedString}}"
+                MoreAppsText="{Binding Path=LocalizedString.MoreApps,Source={StaticResource LocalizedString}}" MoreAppsSearchTerms="Benjamin Sautermeister"/>
         </Grid>
     </Grid>
 </phone:PhoneApplicationPage>

@@ -54,13 +54,11 @@ namespace SeeMensa
         private void localizeAppBar()
         {
             ((Microsoft.Phone.Shell.ApplicationBarIconButton)this.ApplicationBar.Buttons[0]).Text = SeeMensa.Language.Language.AppBarRefresh;
-            ((Microsoft.Phone.Shell.ApplicationBarIconButton)this.ApplicationBar.Buttons[1]).Text = SeeMensa.Language.Language.AppBarSettings;
+            ((Microsoft.Phone.Shell.ApplicationBarIconButton)this.ApplicationBar.Buttons[1]).Text = SeeMensa.Language.Language.SettingsTitle;
             ((Microsoft.Phone.Shell.ApplicationBarIconButton)this.ApplicationBar.Buttons[2]).Text = SeeMensa.Language.Language.AppBarMensaInfo;
-            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text = SeeMensa.Language.Language.AppBarStore;
-            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[1]).Text = SeeMensa.Language.Language.AppBarAbout;
-            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[2]).Text = SeeMensa.Language.Language.AppBarMore;
-            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[3]).Text = SeeMensa.Language.Language.AppBarWin8;
-            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[4]).Text = SeeMensa.Language.Language.AppBarHelp;
+            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text = SeeMensa.Language.Language.InAppStoreTitle;
+            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[1]).Text = SeeMensa.Language.Language.AppBarWin8;
+            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[2]).Text = SeeMensa.Language.Language.AboutTitle;
         }
 
         /// <summary>
