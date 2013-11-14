@@ -21,6 +21,7 @@ using System.Windows.Navigation;
 using SeeMensa.Ad;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Store;
+using PhoneKit.Framework.Advertising;
 
 namespace SeeMensa
 {
@@ -134,7 +135,7 @@ namespace SeeMensa
         /// <summary>
         /// Starts the refresh proccess by async downloading the xml string.
         /// </summary>
-        async private void refresh()
+        private void refresh()
         {
             if (!_client.IsBusy)
             {
@@ -304,21 +305,13 @@ namespace SeeMensa
             var productLicences = CurrentApp.LicenseInformation.ProductLicenses;
             var adFreeLicense = productLicences["ad_free"];
 
-            if (adFreeLicense.IsActive)
+            if (!adFreeLicense.IsActive)
             {
-                // hide banner
-                WebBanner.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                // load advertisment
-                AdBanner adBanner = new AdBanner(WebBanner,
-                    new Uri("http://bsautermeister.de/seemensa/advertising/seemensa_sc.html"),
-                    () => {
-                        WebBanner.Visibility = System.Windows.Visibility.Visible;
-                        AdInTransition.Begin();
-                    });
-                adBanner.ScrollDisabled = true;
+                WebBanner.AdReceived += (s, e) =>
+                {
+                    AdInTransition.Begin();
+                };
+                WebBanner.Start();
             }
         }
     }

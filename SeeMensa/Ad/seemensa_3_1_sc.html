@@ -1,4 +1,3 @@
-<!-- Note: this html script must be loaded from a server -->
 <html>
     <head>
         <title>StudiCluster Banner</title>
@@ -22,7 +21,7 @@
     </head>
     <body style="margin: 0">
         <!-- WP_Test_Tag -->
-        <div id='div-gpt-ad-1379275582111-0' style='width:320px; height:50px;'>
+        <div id='div1' style='width:320px; height:50px;'>
         
         </div>
         <script type='text/javascript'>
@@ -97,9 +96,21 @@
                 });
             })();
 
+            var retiesCount = 9;
 
-            googletag.on("gpt-slot_rendered",function(e,level,message,service,slot,reference){
-                window.external.notify("loaded");
+            function checkStatus() {
+                var hasBanner = document.getElementsByTagName('iframe').length > 0;
+                
+                if (hasBanner)
+                    window.external.notify("ad_loaded");
+                else if (retiesCount > 0) {
+                    retiesCount--;
+                    setTimeout(checkStatus, 500);
+                }
+            }
+
+            googletag.on("gpt-slot_rendered", function (e, level, message, service, slot, reference) {
+                setTimeout(checkStatus, 500);
             });
             googletag.display('div-gpt-ad-1379275582111-0');
         </script>

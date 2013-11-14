@@ -211,8 +211,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ad\seemensa_sc.html" />
-    <Content Include="Ad\test_sc.html" />
+    <None Include="Ad\seemensa_3_1_sc.html" />
+    <None Include="Ad\test_sc.html" />
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

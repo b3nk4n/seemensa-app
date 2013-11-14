@@ -68,8 +68,8 @@
                 <StackPanel Margin="0,35,0,0" DataContext="{Binding CurrentMensaItem}">
                     <TextBlock Text="{Binding Path=LocalizedString.Address,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextSubtleStyle}"/>
                     <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="{Binding Address1}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"/>
-                        <TextBlock Text="{Binding Address2}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Address1}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Address2}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

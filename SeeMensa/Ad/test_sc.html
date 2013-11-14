@@ -97,8 +97,21 @@
                 });
             })();
 
-            googletag.on("gpt-slot_rendered",function(e,level,message,service,slot,reference){
-                window.external.notify("loaded");
+            var retiesCount = 9;
+
+            function checkStatus() {
+                var hasBanner = document.getElementsByTagName('iframe').length > 0;
+
+                if (hasBanner)
+                    window.external.notify("ad_loaded");
+                else if (retiesCount > 0) {
+                    retiesCount--;
+                    setTimeout(checkStatus, 500);
+                }
+            }
+
+            googletag.on("gpt-slot_rendered", function (e, level, message, service, slot, reference) {
+                setTimeout(checkStatus, 500);
             });
             googletag.display('div-gpt-ad-1379275582111-0');
         </script>
