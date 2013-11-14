@@ -22,6 +22,7 @@ using SeeMensa.Ad;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Store;
 using PhoneKit.Framework.Advertising;
+using System.Diagnostics;
 
 namespace SeeMensa
 {

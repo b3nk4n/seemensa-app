@@ -114,7 +114,7 @@ namespace SeeMensa.ViewModels
                     _preis1 = _preis2 = _preis3 = _preis4 = end;
                 }
 
-                _title = _title.Substring(0, _title.Length - 4);
+                _title = _title.Substring(0, _title.Length - 6);
             }
             _title = _title.TrimEnd();
 
