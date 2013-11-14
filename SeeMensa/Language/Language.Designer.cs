@@ -151,6 +151,15 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to seeMENSA.
+        /// </summary>
+        public static string ApplicationTitle {
+            get {
+                return ResourceManager.GetString("ApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Canteen:.
         /// </summary>
         public static string Canteen {
@@ -210,6 +219,42 @@ namespace SeeMensa.Language {
         public static string HelpTitle {
             get {
                 return ResourceManager.GetString("HelpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        public static string InAppStoreLoading {
+            get {
+                return ResourceManager.GetString("InAppStoreLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are currently no in-app purchases available. Please try again later..
+        /// </summary>
+        public static string InAppStoreNoProducts {
+            get {
+                return ResourceManager.GetString("InAppStoreNoProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to purchased.
+        /// </summary>
+        public static string InAppStorePurchased {
+            get {
+                return ResourceManager.GetString("InAppStorePurchased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In-App Store.
+        /// </summary>
+        public static string InAppStoreTitle {
+            get {
+                return ResourceManager.GetString("InAppStoreTitle", resourceCulture);
             }
         }
         
@@ -376,47 +421,11 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Buy now.
-        /// </summary>
-        public static string StoreBuy {
-            get {
-                return ResourceManager.GetString("StoreBuy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to purchased.
-        /// </summary>
-        public static string StorePurchased {
-            get {
-                return ResourceManager.GetString("StorePurchased", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to In-App Store.
-        /// </summary>
-        public static string StoreTitle {
-            get {
-                return ResourceManager.GetString("StoreTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Student.
         /// </summary>
         public static string Student {
             get {
                 return ResourceManager.GetString("Student", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to seeMENSA.
-        /// </summary>
-        public static string TitleStatusText {
-            get {
-                return ResourceManager.GetString("TitleStatusText", resourceCulture);
             }
         }
         

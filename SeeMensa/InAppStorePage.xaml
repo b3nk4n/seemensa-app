@@ -8,32 +8,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:language="clr-namespace:SeeMensa.Language"
+    xmlns:framework="clr-namespace:PhoneKit.Framework.Controls;assembly=PhoneKit.Framework"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" BackKeyPress="PhoneApplicationPage_BackKeyPress"
+    mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+    
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
-                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
             </toolkit:NavigationInTransition.Backward>
             <toolkit:NavigationInTransition.Forward>
-                <toolkit:SlideTransition Mode="SlideUpFadeIn" />
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
             </toolkit:NavigationInTransition.Forward>
         </toolkit:NavigationInTransition>
     </toolkit:TransitionService.NavigationInTransition>
     <toolkit:TransitionService.NavigationOutTransition>
         <toolkit:NavigationOutTransition>
             <toolkit:NavigationOutTransition.Backward>
-                <toolkit:SlideTransition Mode="SlideDownFadeOut" />
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
             </toolkit:NavigationOutTransition.Backward>
             <toolkit:NavigationOutTransition.Forward>
-                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
+    
     <phone:PhoneApplicationPage.Resources>
         <!-- Language -->
         <language:LocalizedStrings x:Key="LocalizedString"/>
@@ -51,34 +54,17 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0">
-            <TextBlock x:Name="PageTitle" Text="{Binding Path=LocalizedString.StoreTitle,Source={StaticResource LocalizedString}}" Margin="12,-10,0,0" FontSize="74" FontFamily="{StaticResource PhoneFontFamilySemiBold}"/>
+            <TextBlock Text="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="{Binding Path=LocalizedString.InAppStoreTitle,Source={StaticResource LocalizedString}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
-        <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,30,12,0">
-            <ScrollViewer HorizontalAlignment="Stretch" Margin="12,0,12,0" Grid.Row="1">
-                <ItemsControl x:Name="pics">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <Grid HorizontalAlignment="Left">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="240"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Margin="4" Source="{Binding ImgLink}" Width="173" Height="173"/>
-                                    <StackPanel Grid.Column="1" Margin="10,28,0,0">
-                                        <TextBlock FontWeight="ExtraBold" Text="{Binding Name}" />
-                                        <TextBlock FontWeight="Normal" Text="{Binding Description}" TextWrapping="Wrap" />
-                                        <TextBlock FontWeight="Bold" Text="{Binding Status}" />
-                                        <Button Content="{Binding Path=LocalizedString.StoreBuy,Source={StaticResource LocalizedString}}" Visibility="{Binding BuyNowButtonVisible}" Click="ButtonBuyNow_Clicked" Tag="{Binding Key}" />
-                                    </StackPanel>
-                                </Grid>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
+            <framework:InAppStoreControl x:Name="InAppStore"
+                InAppStoreLoadingText="{Binding Path=LocalizedString.InAppStoreLoading,Source={StaticResource LocalizedString}}"
+                InAppStoreNoProductsText="{Binding Path=LocalizedString.InAppStoreNoProducts,Source={StaticResource LocalizedString}}"
+                InAppStorePurchasedText="{Binding Path=LocalizedString.InAppStorePurchased,Source={StaticResource LocalizedString}}"
+                SupportedProductIds="ad_free,donate"/>
         </Grid>
+
     </Grid>
 </phone:PhoneApplicationPage>

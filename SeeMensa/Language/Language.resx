@@ -157,6 +157,10 @@
     <value>seeMENSA for Windows 8</value>
     <comment>AppBar</comment>
   </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>seeMENSA</value>
+    <comment>Global</comment>
+  </data>
   <data name="Canteen" xml:space="preserve">
     <value>Canteen:</value>
     <comment>SettingsPage</comment>
@@ -184,6 +188,22 @@
   <data name="HelpTitle" xml:space="preserve">
     <value>Help</value>
     <comment>HelpPage</comment>
+  </data>
+  <data name="InAppStoreLoading" xml:space="preserve">
+    <value>Loading...</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStoreNoProducts" xml:space="preserve">
+    <value>There are currently no in-app purchases available. Please try again later.</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStorePurchased" xml:space="preserve">
+    <value>purchased</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStoreTitle" xml:space="preserve">
+    <value>In-App Store</value>
+    <comment>InAppStorePage</comment>
   </data>
   <data name="MensaFn" xml:space="preserve">
     <value>Canteen Friedrichshafen</value>
@@ -257,25 +277,9 @@
     <value>Settings</value>
     <comment>SettingsPage</comment>
   </data>
-  <data name="StoreBuy" xml:space="preserve">
-    <value>Buy now</value>
-    <comment>InAppStorePage</comment>
-  </data>
-  <data name="StorePurchased" xml:space="preserve">
-    <value>purchased</value>
-    <comment>InAppStorePage</comment>
-  </data>
-  <data name="StoreTitle" xml:space="preserve">
-    <value>In-App Store</value>
-    <comment>InAppStorePage</comment>
-  </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>
     <comment>SettingsPage</comment>
-  </data>
-  <data name="TitleStatusText" xml:space="preserve">
-    <value>seeMENSA</value>
-    <comment>Global</comment>
   </data>
   <data name="UpdateStatusText" xml:space="preserve">
     <value>updating...</value>
