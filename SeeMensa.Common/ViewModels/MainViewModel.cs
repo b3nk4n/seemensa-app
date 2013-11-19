@@ -38,6 +38,11 @@ namespace SeeMensa.Common.ViewModels
         public ObservableCollection<DayViewModel> Days { get; private set; }
 
         /// <summary>
+        /// The singleton instance.
+        /// </summary>
+        private static MainViewModel _instance = null;
+
+        /// <summary>
         /// The index of the current mensa.
         /// </summary>
         private int _mensaIndex;
@@ -58,9 +63,14 @@ namespace SeeMensa.Common.ViewModels
         public DateTime LastUpdate { get; set; }
 
         /// <summary>
+        /// The date of the last live tile update.
+        /// </summary>
+        public DateTime LastTileUpdate { get; set; }
+
+        /// <summary>
         /// The selected price type.
         /// </summary>
-        private static PriceType _priceType;
+        private PriceType _priceType;
 
         /// <summary>
         /// The selected index in the panorama control.
@@ -86,12 +96,9 @@ namespace SeeMensa.Common.ViewModels
 
         #region Constructors
 
-        /// <summary>
-        /// Creates a new MainViewModel.
-        /// </summary>
-        public MainViewModel()
+        private MainViewModel()
         {
-            this.Days = new ObservableCollection<DayViewModel>();
+            Days = new ObservableCollection<DayViewModel>();
 
             string uniknTitle;
             string htwgknTitle;
@@ -151,11 +158,12 @@ namespace SeeMensa.Common.ViewModels
         /// Creates the MainViewModel by parsing an XML file.
         /// </summary>
         /// <param name="xmlDoc">The XML document of the whole menu.</param>
-        public void CreateFromXml(string xml)
+        /// <param name="onlyToday">Optimization, if only the todays meals are needed.</param>
+        public void CreateFromXml(string xml, bool onlyToday = false)
         {
             XDocument xmlDoc = XDocument.Parse(xml);
 
-            this.Days.Clear();
+            Days.Clear();
 
             int validDaysCounter = 0;
 
@@ -165,8 +173,11 @@ namespace SeeMensa.Common.ViewModels
 
                 if (day.IsValid)
                 {
-                    this.Days.Add(day);
+                    Days.Add(day);
                     ++validDaysCounter;
+
+                    if (onlyToday)
+                        break;
                 }
 
                 if (validDaysCounter >= MAX_DISPLAY_DAYS)
@@ -175,12 +186,12 @@ namespace SeeMensa.Common.ViewModels
                 }
             }
 
-            this.Xml = xml;
+            Xml = xml;
             
             if (_mensaIndex == -1)
-                this.IsDataLoaded = false;
+                IsDataLoaded = false;
             else
-                this.IsDataLoaded = true;
+                IsDataLoaded = true;
 
             CurrentMensaName = CurrentMensaItem.Name;
         }
@@ -197,6 +208,20 @@ namespace SeeMensa.Common.ViewModels
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// Gets the singleton instance.
+        /// </summary>
+        public static MainViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new MainViewModel();
+
+                return _instance;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the index of the current mensa.
@@ -220,7 +245,7 @@ namespace SeeMensa.Common.ViewModels
         /// <summary>
         /// Gets or sets the current selected price type.
         /// </summary>
-        public static PriceType PriceType
+        public PriceType PriceType
         {
             set
             {

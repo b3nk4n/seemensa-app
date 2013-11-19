@@ -706,7 +706,7 @@ namespace SeeMensa.Common.ViewModels
             {
                 string priceToReturn = "";
 
-                switch (MainViewModel.PriceType)
+                switch (MainViewModel.Instance.PriceType)
                 {
                     case PriceType.Guest:
                         priceToReturn = _preis3;

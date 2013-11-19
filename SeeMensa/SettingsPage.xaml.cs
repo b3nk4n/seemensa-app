@@ -39,10 +39,10 @@ namespace SeeMensa
 
             this.Loaded += new RoutedEventHandler(SettingsPage_Loaded);
 
-            if (!App.ViewModel.IsDataLoaded)
-                App.ViewModel.CreateFromXml(App.ViewModel.Xml);
+            if (!MainViewModel.Instance.IsDataLoaded)
+                MainViewModel.Instance.CreateFromXml(MainViewModel.Instance.Xml);
 
-            this.DataContext = App.ViewModel;
+            this.DataContext = MainViewModel.Instance;
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace SeeMensa
         /// </summary>
         void SettingsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            this.lpMensas.SelectedIndex = App.ViewModel.MensaIndex;
+            this.lpMensas.SelectedIndex = MainViewModel.Instance.MensaIndex;
 
-            switch (MainViewModel.PriceType)
+            switch (MainViewModel.Instance.PriceType)
             {
                 case PriceType.Student:
                     rbStudent.IsChecked = true;
@@ -93,7 +93,7 @@ namespace SeeMensa
         {
             base.OnNavigatedTo(e);
 
-            _initialMensaIndex = App.ViewModel.MensaIndex;
+            _initialMensaIndex = MainViewModel.Instance.MensaIndex;
         }
 
         /// <summary>
@@ -103,9 +103,11 @@ namespace SeeMensa
         {
             base.OnNavigatedFrom(e);
 
-            if (_initialMensaIndex != App.ViewModel.MensaIndex)
-                //App.ViewModel.NeedsRefresh = true;
-                App.ViewModel.Xml = string.Empty;
+            if (_initialMensaIndex != MainViewModel.Instance.MensaIndex)
+            {
+                MainViewModel.Instance.LastUpdate = DateTime.MinValue;
+                MainViewModel.Instance.LastTileUpdate = DateTime.MinValue;
+            }
         }
 
         /// <summary>
@@ -124,7 +126,7 @@ namespace SeeMensa
             else
             {
                 ListPicker picker = sender as ListPicker;
-                App.ViewModel.MensaIndex = this.lpMensas.SelectedIndex;
+                MainViewModel.Instance.MensaIndex = this.lpMensas.SelectedIndex;
             }
         }
 
@@ -134,13 +136,13 @@ namespace SeeMensa
         private void PriceChecked(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            MainViewModel.PriceType = (PriceType) Enum.Parse(typeof(PriceType), (string)rb.Tag, true);
+            MainViewModel.Instance.PriceType = (PriceType)Enum.Parse(typeof(PriceType), (string)rb.Tag, true);
         }
 
         private bool IsPeriodicTaskActive(string agentName)
         {
             var task = ScheduledActionService.Find(agentName) as PeriodicTask;
-            return task != null;
+            return task != null && task.IsScheduled;
         }
 
         private void StartPeriodicTask()
@@ -169,8 +171,7 @@ namespace SeeMensa
             try
             {
                 ScheduledActionService.Add(periodicTask);
-                //PeriodicStackPanel.DataContext = periodicTask;
-
+                
                 // If debugging is enabled, use LaunchForTest to launch the agent in one minute.
 #if(DEBUG)
                 ScheduledActionService.LaunchForTest(periodicTaskName, TimeSpan.FromSeconds(60));
@@ -180,9 +181,8 @@ namespace SeeMensa
             {
                 if (exception.Message.Contains("BNS Error: The action is disabled"))
                 {
-                    MessageBox.Show("Background agents for this application have been disabled by the user.");
+                    MessageBox.Show("Background agents for this application have been disabled.");
                     agentsAreEnabled = false;
-                    //PeriodicCheckBox.IsChecked = false;
                 }
 
                 if (exception.Message.Contains("BNS Error: The maximum number of ScheduledActions of this type have already been added."))
@@ -191,12 +191,10 @@ namespace SeeMensa
 
                 }
                 BackgroundAgentToggle.IsChecked = false;
-                //PeriodicCheckBox.IsChecked = false;
             }
             catch (SchedulerServiceException)
             {
                 // No user action required.
-                //PeriodicCheckBox.IsChecked = false;
                 BackgroundAgentToggle.IsChecked = false;
             }
         }

@@ -27,25 +27,7 @@ namespace SeeMensa
 {
     public partial class App : Application
     {
-        private static MainViewModel viewModel = null;
-
         private readonly IsolatedStorageSettings _settings = IsolatedStorageSettings.ApplicationSettings;
-
-        /// <summary>
-        /// A static ViewModel used by the views to bind against.
-        /// </summary>
-        /// <returns>The MainViewModel object.</returns>
-        public static MainViewModel ViewModel
-        {
-            get
-            {
-                // Delay creation of the view model until necessary
-                if (viewModel == null)
-                    viewModel = new MainViewModel();
-
-                return viewModel;
-            }
-        }
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -100,9 +82,9 @@ namespace SeeMensa
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded)
+            if (!MainViewModel.Instance.IsDataLoaded)
             {
-                //App.ViewModel.LoadData();
+                //MainViewModel.LoadData();
                 load(true);
             }
         }
@@ -120,44 +102,6 @@ namespace SeeMensa
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
             save();
-        }
-
-        /// <summary>
-        /// Updates the live tile.
-        /// </summary>
-        public static void UpdateLiveTiles()
-        {
-            LiveTileHelper.ClearStorage();
-
-            IList<Uri> images = CreateLiveTileImages();
-            if (images.Count > 0)
-            {
-                LiveTileHelper.UpdateDefaultTile(new CycleTileData
-                    {
-                        CycleImages = images,
-                        SmallBackgroundImage = App.ViewModel.CurrentMensaItem.ImageUri
-                    });
-            }
-        }
-
-        /// <summary>
-        /// Creates live tile images from mensa data.
-        /// </summary>
-        /// <returns>The list of images.</returns>
-        public static IList<Uri> CreateLiveTileImages()
-        {
-            IList<Uri> images = new List<Uri>();
-            var day = App.ViewModel.Days[0];
-
-            LiveTileHelper.ClearStorage();
-
-            for (int i = 0; i < App.ViewModel.Days[0].Meals.Count; ++i)
-            {
-                var image = GraphicsHelper.Create(new MealNormalTileControl(day.Meals[i].Category, day.Meals[i].Title, App.ViewModel.CurrentMensaItem.ImageUri.OriginalString));
-                images.Add(StorageHelper.SaveJpeg(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile{0}.jpeg", i), image));
-            }
-
-            return images;
         }
 
         // Code to execute if a navigation fails
@@ -224,52 +168,61 @@ namespace SeeMensa
         /// </summary>
         private void save()
         {
-            if(!String.IsNullOrEmpty(App.ViewModel.Xml))
+            if(!String.IsNullOrEmpty(MainViewModel.Instance.Xml))
             {
                 // Xml string
                 if (_settings.Contains("xml"))
                 {
-                    _settings["xml"] = App.ViewModel.Xml;
+                    _settings["xml"] = MainViewModel.Instance.Xml;
                 }
                 else
                 {
-                    _settings.Add("xml", App.ViewModel.Xml);
+                    _settings.Add("xml", MainViewModel.Instance.Xml);
                 }
                 // Mensa index
                 if (_settings.Contains("mensaIndex"))
                 {
-                    _settings["mensaIndex"] = App.ViewModel.MensaIndex;
+                    _settings["mensaIndex"] = MainViewModel.Instance.MensaIndex;
                 }
                 else
                 {
-                    _settings.Add("mensaIndex", App.ViewModel.MensaIndex);
+                    _settings.Add("mensaIndex", MainViewModel.Instance.MensaIndex);
                 }
                 // Last update
                 if (_settings.Contains("lastUpdate"))
                 {
-                    _settings["lastUpdate"] = App.ViewModel.LastUpdate;
+                    _settings["lastUpdate"] = MainViewModel.Instance.LastUpdate;
                 }
                 else
                 {
-                    _settings.Add("lastUpdate", App.ViewModel.LastUpdate);
+                    _settings.Add("lastUpdate", MainViewModel.Instance.LastUpdate);
+                }
+                // Last tile update
+                if (_settings.Contains("lastTileUpdate"))
+                {
+                    _settings["lastTileUpdate"] = MainViewModel.Instance.LastTileUpdate;
+                }
+                else
+                {
+                    _settings.Add("lastTileUpdate", MainViewModel.Instance.LastTileUpdate);
                 }
                 // Price type
                 if (_settings.Contains("priceType"))
                 {
-                    _settings["priceType"] = MainViewModel.PriceType;
+                    _settings["priceType"] = MainViewModel.Instance.PriceType;
                 }
                 else
                 {
-                    _settings.Add("priceType", MainViewModel.PriceType);
+                    _settings.Add("priceType", MainViewModel.Instance.PriceType);
                 }
                 // Panorama index
                 if (_settings.Contains("panoramaIndex"))
                 {
-                    _settings["panoramaIndex"] = App.ViewModel.PanoramaIndex;
+                    _settings["panoramaIndex"] = MainViewModel.Instance.PanoramaIndex;
                 }
                 else
                 {
-                    _settings.Add("panoramaIndex", App.ViewModel.PanoramaIndex);
+                    _settings.Add("panoramaIndex", MainViewModel.Instance.PanoramaIndex);
                 }
 
                 _settings.Save();
@@ -285,7 +238,7 @@ namespace SeeMensa
         {
             if (_settings.Contains("xml"))
             {
-                App.ViewModel.Xml = (string)_settings["xml"];
+                MainViewModel.Instance.Xml = (string)_settings["xml"];
             }
             if (_settings.Contains("mensaIndex"))
             {
@@ -296,21 +249,25 @@ namespace SeeMensa
                 if (mIndex == 4)
                     mIndex = 1;
 
-                App.ViewModel.MensaIndex = mIndex;
+                MainViewModel.Instance.MensaIndex = mIndex;
             }
             if (_settings.Contains("lastUpdate"))
             {
-                App.ViewModel.LastUpdate = (DateTime)_settings["lastUpdate"];
+                MainViewModel.Instance.LastUpdate = (DateTime)_settings["lastUpdate"];
+            }
+            if (_settings.Contains("lastTileUpdate"))
+            {
+                MainViewModel.Instance.LastTileUpdate = (DateTime)_settings["lastTileUpdate"];
             }
             if (_settings.Contains("priceType"))
             {
-                MainViewModel.PriceType = (PriceType)_settings["priceType"];
+                MainViewModel.Instance.PriceType = (PriceType)_settings["priceType"];
             }
             if (withPanoramaIndex)
             {
                 if (_settings.Contains("panoramaIndex"))
                 {
-                    App.ViewModel.PanoramaIndex = (int)_settings["panoramaIndex"];
+                    MainViewModel.Instance.PanoramaIndex = (int)_settings["panoramaIndex"];
                 }
             }
         }

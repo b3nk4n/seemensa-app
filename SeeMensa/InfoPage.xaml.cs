@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using SeeMensa.Common.ViewModels;
 
 namespace SeeMensa
 {
@@ -25,10 +26,10 @@ namespace SeeMensa
         {
             InitializeComponent();
 
-            if (!App.ViewModel.IsDataLoaded)
-                App.ViewModel.CreateFromXml(App.ViewModel.Xml);
+            if (!MainViewModel.Instance.IsDataLoaded)
+                MainViewModel.Instance.CreateFromXml(MainViewModel.Instance.Xml);
 
-            this.DataContext = App.ViewModel;
+            this.DataContext = MainViewModel.Instance;
         }
     }
 }

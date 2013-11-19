@@ -1,5 +1,7 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
+using SeeMensa.Common.LiveTile;
+using SeeMensa.Common.ViewModels;
 using System;
 using System.Globalization;
 using System.Net;
@@ -33,7 +35,7 @@ namespace SeeMensa
             LoadWebBanner();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
+            DataContext = MainViewModel.Instance;
         }
 
         /// <summary>
@@ -54,7 +56,7 @@ namespace SeeMensa
         /// </summary>
         private void updateAppBar()
         {
-            if (App.ViewModel.IsDataLoaded)
+            if (MainViewModel.Instance.IsDataLoaded)
             {
                 ((Microsoft.Phone.Shell.ApplicationBarIconButton)ApplicationBar.Buttons[1]).IsEnabled = true;
                 ((Microsoft.Phone.Shell.ApplicationBarIconButton)ApplicationBar.Buttons[2]).IsEnabled = true;
@@ -71,7 +73,7 @@ namespace SeeMensa
         /// </summary>
         protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
         {
-            App.ViewModel.PanoramaIndex = panMeals.SelectedIndex;
+            MainViewModel.Instance.PanoramaIndex = panMeals.SelectedIndex;
         }
 
         /// <summary>
@@ -79,28 +81,28 @@ namespace SeeMensa
         /// </summary>
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(App.ViewModel.Xml))
+            if (!string.IsNullOrEmpty(MainViewModel.Instance.Xml))
             {
                 DateTime now = DateTime.Now;
-                DateTime lastUpdate = App.ViewModel.LastUpdate;
+                DateTime lastUpdate = MainViewModel.Instance.LastUpdate;
 
                 TimeSpan delay = now.Subtract(lastUpdate);
 
-                if (delay.Days >= 7)
+                if (delay.TotalDays >= 7)
                 {
                     this.refresh();
                 }
                 else
                 {
-                    this.updatePanaroamaControl(App.ViewModel.Xml);
+                    this.updatePanaroamaControl(MainViewModel.Instance.Xml);
 
-                    this.DataContext = App.ViewModel;
+                    this.DataContext = MainViewModel.Instance;
 
                     // Sets the default/current item (new in Version 1.3)
-                    if (App.ViewModel.PanoramaIndex >= 0 &&
-                        App.ViewModel.PanoramaIndex < panMeals.Items.Count)
+                    if (MainViewModel.Instance.PanoramaIndex >= 0 &&
+                        MainViewModel.Instance.PanoramaIndex < panMeals.Items.Count)
                     {
-                        panMeals.DefaultItem = panMeals.Items[App.ViewModel.PanoramaIndex];
+                        panMeals.DefaultItem = panMeals.Items[MainViewModel.Instance.PanoramaIndex];
                     }
 
                     this.updateAppBar();
@@ -121,8 +123,17 @@ namespace SeeMensa
             if (e.NavigationMode == NavigationMode.Back ||
                 e.Uri.OriginalString == "app://external/")
             {
+                DateTime now = DateTime.Now;
+                DateTime lastUpdate = MainViewModel.Instance.LastTileUpdate;
+
+                TimeSpan delay = now.Subtract(lastUpdate);
+
                 // Update the live tile
-                App.UpdateLiveTiles();
+                if (delay.TotalHours >= 12 || lastUpdate.Day != now.Day)
+                {
+                    SeeMensaLiveTileHelper.UpdateLiveTiles();
+                    MainViewModel.Instance.LastTileUpdate = DateTime.Now;
+                }
             }
         }
 
@@ -136,11 +147,11 @@ namespace SeeMensa
                 Uri uri;
                 if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName.Equals("de"))
                 {
-                    uri = App.ViewModel.CurrentMensaItem.DeUri;
+                    uri = MainViewModel.Instance.CurrentMensaItem.DeUri;
                 }
                 else
                 {
-                    uri = App.ViewModel.CurrentMensaItem.EnUri;
+                    uri = MainViewModel.Instance.CurrentMensaItem.EnUri;
                 }
 
                 // Start system tray progress bar
@@ -179,9 +190,9 @@ namespace SeeMensa
         /// <param name="xml">The xml string.</param>
         private void updatePanaroamaControl(string xml)
         {
-            App.ViewModel.CreateFromXml(xml);
+            MainViewModel.Instance.CreateFromXml(xml);
 
-            if (App.ViewModel.HasMeals())
+            if (MainViewModel.Instance.HasMeals())
             {
                 panMeals.IsEnabled = true;
             }
@@ -206,9 +217,9 @@ namespace SeeMensa
 
                 this.updatePanaroamaControl(xml);
 
-                this.DataContext = App.ViewModel;
+                this.DataContext = MainViewModel.Instance;
 
-                App.ViewModel.LastUpdate = DateTime.Now;
+                MainViewModel.Instance.LastUpdate = DateTime.Now;
             }
             else
             {
