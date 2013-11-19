@@ -125,9 +125,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MealTileControl.xaml.cs">
-      <DependentUpon>MealTileControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\MealTypeControl.xaml.cs">
       <DependentUpon>MealTypeControl.xaml</DependentUpon>
     </Compile>
@@ -165,10 +162,6 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="AboutPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\MealTileControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

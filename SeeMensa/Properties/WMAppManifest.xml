@@ -37,7 +37,7 @@
           <Photo09ImageURI IsRelative="true" IsResource="false">
           </Photo09ImageURI>
           <Count>0</Count>
-          <HasLarge>True</HasLarge>
+          <HasLarge>False</HasLarge>
           <DeviceLockImageURI IsRelative="true" IsResource="false">
           </DeviceLockImageURI>
         </TemplateCycle>

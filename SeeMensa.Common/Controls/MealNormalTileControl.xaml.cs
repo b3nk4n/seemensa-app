@@ -1,46 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 using System.Windows.Media.Imaging;
-using System.Windows.Resources;
 using System.IO;
 
-namespace SeeMensa.Controls
+namespace SeeMensa.Common.Controls
 {
     /// <summary>
     /// Represents the UI for an wide live tile.
     /// </summary>
-    public partial class MealTileControl : UserControl
+    public partial class MealNormalTileControl : UserControl
     {
         /// <summary>
-        /// Creates a MealTileControl instance.
+        /// Creates a MealNormalTileControl instance.
         /// </summary>
-        public MealTileControl()
+        public MealNormalTileControl()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Creates a MealTileControl instance.
+        /// Creates a MealNormalTileControl instance.
         /// </summary>
         /// <param name="title">The meal title.</param>
         /// <param name="description">The meal description text.</param>
-        public MealTileControl(string title, string description, string iconPath)
+        public MealNormalTileControl(string title, string description, string iconPath)
             : this()
         {
             this.Title.Text = title;
             this.Description.Text = description;
 
+            // set image source in code, because the XAML implementation is asyc,
+            // so it is not going to be rendered.
             BitmapImage bmi = new BitmapImage();
             bmi.CreateOptions = BitmapCreateOptions.None;
-
-
 
             using (var file = new FileStream(iconPath, FileMode.Open))
             {

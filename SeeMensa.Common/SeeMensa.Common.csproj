@@ -83,6 +83,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\MealNormalTileControl.xaml.cs">
+      <DependentUpon>MealNormalTileControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MealTileControl.xaml.cs">
+      <DependentUpon>MealTileControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PriceType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DayViewModel.cs" />
@@ -94,6 +100,16 @@
     <Reference Include="PhoneKit.Framework">
       <HintPath>..\libs\PhoneKit.Framework.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\MealNormalTileControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MealTileControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

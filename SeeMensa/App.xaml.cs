@@ -18,10 +18,10 @@ using System.Threading;
 using SeeMensa.Language;
 using PhoneKit.Framework.Tile;
 using PhoneKit.Framework.Graphics;
-using SeeMensa.Controls;
 using PhoneKit.Framework.Storage;
 using SeeMensa.Common.ViewModels;
 using SeeMensa.Common;
+using SeeMensa.Common.Controls;
 
 namespace SeeMensa
 {
@@ -129,7 +129,6 @@ namespace SeeMensa
         {
             LiveTileHelper.ClearStorage();
 
-            var image = GraphicsHelper.Create(new MealTileControl());
             IList<Uri> images = CreateLiveTileImages();
             if (images.Count > 0)
             {
@@ -154,7 +153,7 @@ namespace SeeMensa
 
             for (int i = 0; i < App.ViewModel.Days[0].Meals.Count; ++i)
             {
-                var image = GraphicsHelper.Create(new MealTileControl(day.Meals[i].Category, day.Meals[i].Title, App.ViewModel.CurrentMensaItem.ImageUri.OriginalString));
+                var image = GraphicsHelper.Create(new MealNormalTileControl(day.Meals[i].Category, day.Meals[i].Title, App.ViewModel.CurrentMensaItem.ImageUri.OriginalString));
                 images.Add(StorageHelper.SaveJpeg(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile{0}.jpeg", i), image));
             }
 

@@ -1,8 +1,8 @@
-﻿<local:MainViewModel
+﻿<common:MainViewModel
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:SeeMensa.ViewModels">
-    <local:MainViewModel.Days>
+    xmlns:common="clr-namespace:SeeMensa.Common.ViewModels;assembly=SeeMensa.Common">
+    <common:MainViewModel.Days>
         <!--<local:MealOfDayViewModel Day="2011-02-23">
             <local:MealOfDayViewModel.Meals>
             <local:MealViewModel Day="2011-02-23" Name="Pork blade steak with pepper sauce, carrots and spirelli" Kind="Essen" Type="main meal"
@@ -16,6 +16,6 @@
                 <local:GarnishViewModel Day="2011-02-23" Name="Kohlrabi" Kind="Beilagen" Type="side dishes" StudentPrice="0.7" EmployeePrice="0.7" GuestPrice="0.7"/>
             </local:MealOfDayViewModel.Garnish>
         </local:MealOfDayViewModel>-->
-        <local:DayViewModel Day="2011-02-23" />
-    </local:MainViewModel.Days>
-</local:MainViewModel>
+        <common:DayViewModel Day="2011-02-23" />
+    </common:MainViewModel.Days>
+</common:MainViewModel>
