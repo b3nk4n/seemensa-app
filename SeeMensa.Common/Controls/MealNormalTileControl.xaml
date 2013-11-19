@@ -11,14 +11,14 @@
     Height="336" Width="336">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneAccentBrush}">
-        <Border Margin="52,98,52,16">
+        <Border Margin="52,110,52,16">
             <Grid>
                 <Image x:Name="Icon" Width="48" Height="48" Margin="0,-5,12,0"
                        VerticalAlignment="Top" HorizontalAlignment="Right" />
                 <StackPanel>
                     <TextBlock x:Name="Title" Text="Title" Style="{StaticResource PhoneTextNormalStyle}" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left"/>
                     <TextBlock x:Name="Description" Text="This is the description text of the live tile with more specific information about all kind of things. Also it supports work ellipsis to trim sentences if they are too long."
-                        TextAlignment="Left" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="188" Margin="12,6,12,0"
+                        TextAlignment="Left" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="142" Margin="12,4,12,0"
                         Style="{StaticResource PhoneTextNormalStyle}" />
                 </StackPanel>
             </Grid>
