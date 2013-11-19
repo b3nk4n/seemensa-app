@@ -17,6 +17,10 @@ using System.IO.IsolatedStorage;
 using System.Globalization;
 using System.Threading;
 using SeeMensa.Language;
+using PhoneKit.Framework.Tile;
+using PhoneKit.Framework.Graphics;
+using SeeMensa.Controls;
+using PhoneKit.Framework.Storage;
 
 namespace SeeMensa
 {
@@ -122,16 +126,38 @@ namespace SeeMensa
         /// </summary>
         public static void UpdateLiveTiles()
         {
-            ShellTile currentTiles = ShellTile.ActiveTiles.First();
-            var tilesUpdatedData = new StandardTileData();
-            tilesUpdatedData.BackTitle = Language.Language.MensaTile;
+            LiveTileHelper.ClearStorage();
 
-            if (App.ViewModel.CurrentMensaItem != null)
+            var image = GraphicsHelper.Create(new MealTileControl());
+            IList<Uri> images = CreateLiveTileImages();
+            if (images.Count > 0)
             {
-                tilesUpdatedData.BackBackgroundImage = App.ViewModel.CurrentMensaItem.ImageUri;
+                LiveTileHelper.UpdateDefaultTile(new CycleTileData
+                    {
+                        CycleImages = images,
+                        SmallBackgroundImage = App.ViewModel.CurrentMensaItem.ImageUri
+                    });
+            }
+        }
+
+        /// <summary>
+        /// Creates live tile images from mensa data.
+        /// </summary>
+        /// <returns>The list of images.</returns>
+        public static IList<Uri> CreateLiveTileImages()
+        {
+            IList<Uri> images = new List<Uri>();
+            var day = App.ViewModel.Days[0];
+
+            LiveTileHelper.ClearStorage();
+
+            for (int i = 0; i < App.ViewModel.Days[0].Meals.Count; ++i)
+            {
+                var image = GraphicsHelper.Create(new MealTileControl(day.Meals[i].Category, day.Meals[i].Title, App.ViewModel.CurrentMensaItem.ImageUri.OriginalString));
+                images.Add(StorageHelper.SaveJpeg(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile{0}.jpeg", i), image));
             }
 
-            currentTiles.Update(tilesUpdatedData);
+            return images;
         }
 
         // Code to execute if a navigation fails

@@ -111,9 +111,19 @@ namespace SeeMensa
                 // this.DataContext = null; (CAUSED THIS THE CRASH BUG !?!?!)
                 this.refresh();
             }
+        }
 
-            // Update the live tile
-            App.UpdateLiveTiles();
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            // verify it was a BACK button or a WINDOWS button
+            if (e.NavigationMode == NavigationMode.Back ||
+                e.Uri.OriginalString == "app://external/")
+            {
+                // Update the live tile
+                App.UpdateLiveTiles();
+            }
         }
 
         /// <summary>
