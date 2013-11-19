@@ -133,7 +133,6 @@
     </Compile>
     <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Converters\DayConverter.cs" />
-    <Compile Include="Converters\OpeningConverter.cs" />
     <Compile Include="Converters\TimeRangeConverter.cs" />
     <Compile Include="HelpPage.xaml.cs">
       <DependentUpon>HelpPage.xaml</DependentUpon>
@@ -155,16 +154,10 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PriceType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\DayViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\MealViewModel.cs" />
-    <Compile Include="ViewModels\MensaItemViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -261,6 +254,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SeeMensa.Common\SeeMensa.Common.csproj">
+      <Project>{66146BD0-E70F-44B1-A4C7-2C5637B1C76C}</Project>
+      <Name>SeeMensa.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SeeMensa.Scheduler\SeeMensa.Scheduler.csproj">
       <Project>{DF7256BD-A603-438E-BE06-882541211CFB}</Project>
       <Name>SeeMensa.Scheduler</Name>

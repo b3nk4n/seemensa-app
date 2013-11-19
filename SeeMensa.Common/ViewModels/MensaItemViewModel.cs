@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhoneKit.Framework.MVVM;
+using System;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace SeeMensa.ViewModels
+namespace SeeMensa.Common.ViewModels
 {
     public class MensaItemViewModel : ViewModelBase
     {
@@ -98,7 +99,7 @@ namespace SeeMensa.ViewModels
                 if (value != _name)
                 {
                     _name = value;
-                    RaisePropertyChanged("Name");
+                    NotifyPropertyChanged("Name");
                 }
             }
         }
@@ -117,7 +118,7 @@ namespace SeeMensa.ViewModels
                 if (value != _deUri)
                 {
                     _deUri = value;
-                    RaisePropertyChanged("DeUri");
+                    NotifyPropertyChanged("DeUri");
                 }
             }
         }
@@ -136,7 +137,7 @@ namespace SeeMensa.ViewModels
                 if (value != _enUri)
                 {
                     _enUri = value;
-                    RaisePropertyChanged("EnUri");
+                    NotifyPropertyChanged("EnUri");
                 }
             }
         }
@@ -155,7 +156,7 @@ namespace SeeMensa.ViewModels
                 if (value != _address1)
                 {
                     _address1 = value;
-                    RaisePropertyChanged("Address1");
+                    NotifyPropertyChanged("Address1");
                 }
             }
         }
@@ -174,7 +175,7 @@ namespace SeeMensa.ViewModels
                 if (value != _address2)
                 {
                     _address2 = value;
-                    RaisePropertyChanged("Address2");
+                    NotifyPropertyChanged("Address2");
                 }
             }
         }
@@ -193,7 +194,7 @@ namespace SeeMensa.ViewModels
                 if (value != _imageUri)
                 {
                     _imageUri = value;
-                    RaisePropertyChanged("ImageUri");
+                    NotifyPropertyChanged("ImageUri");
                 }
             }
         }

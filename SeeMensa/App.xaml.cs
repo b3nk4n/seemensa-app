@@ -12,7 +12,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using SeeMensa.ViewModels;
 using System.IO.IsolatedStorage;
 using System.Globalization;
 using System.Threading;
@@ -21,6 +20,8 @@ using PhoneKit.Framework.Tile;
 using PhoneKit.Framework.Graphics;
 using SeeMensa.Controls;
 using PhoneKit.Framework.Storage;
+using SeeMensa.Common.ViewModels;
+using SeeMensa.Common;
 
 namespace SeeMensa
 {
@@ -256,11 +257,11 @@ namespace SeeMensa
                 // Price type
                 if (_settings.Contains("priceType"))
                 {
-                    _settings["priceType"] = App.ViewModel.PriceType;
+                    _settings["priceType"] = MainViewModel.PriceType;
                 }
                 else
                 {
-                    _settings.Add("priceType", App.ViewModel.PriceType);
+                    _settings.Add("priceType", MainViewModel.PriceType);
                 }
                 // Panorama index
                 if (_settings.Contains("panoramaIndex"))
@@ -304,7 +305,7 @@ namespace SeeMensa
             }
             if (_settings.Contains("priceType"))
             {
-                App.ViewModel.PriceType = (PriceType)_settings["priceType"];
+                MainViewModel.PriceType = (PriceType)_settings["priceType"];
             }
             if (withPanoramaIndex)
             {

@@ -11,8 +11,9 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Text;
+using PhoneKit.Framework.MVVM;
 
-namespace SeeMensa.ViewModels
+namespace SeeMensa.Common.ViewModels
 {
     /// <summary>
     /// ViewModel that represents a meal.
@@ -538,7 +539,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_category != value)
                 {
-                    RaisePropertyChanged("Category");
+                    NotifyPropertyChanged("Category");
                     _category = value;
                 }
             }
@@ -557,7 +558,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_title != value)
                 {
-                    RaisePropertyChanged("Title");
+                    NotifyPropertyChanged("Title");
                     _title = value;
                 }
             }
@@ -576,7 +577,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_description != value)
                 {
-                    RaisePropertyChanged("Description");
+                    NotifyPropertyChanged("Description");
                     _description = value;
                 }
             }
@@ -595,7 +596,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_kennzeichnungen != value)
                 {
-                    RaisePropertyChanged("Kennzeichnungen");
+                    NotifyPropertyChanged("Kennzeichnungen");
                     _kennzeichnungen = value;
                 }
             }
@@ -614,7 +615,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_beilagen != value)
                 {
-                    RaisePropertyChanged("Beilagen");
+                    NotifyPropertyChanged("Beilagen");
                     _beilagen = value;
                 }
             }
@@ -633,7 +634,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_preis1 != value)
                 {
-                    RaisePropertyChanged("Preis1");
+                    NotifyPropertyChanged("Preis1");
                     _preis1 = value;
                 }
             }
@@ -652,7 +653,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_preis2 != value)
                 {
-                    RaisePropertyChanged("Preis2");
+                    NotifyPropertyChanged("Preis2");
                     _preis2 = value;
                 }
             }
@@ -671,7 +672,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_preis3 != value)
                 {
-                    RaisePropertyChanged("Preis3");
+                    NotifyPropertyChanged("Preis3");
                     _preis3 = value;
                 }
             }
@@ -690,7 +691,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_preis4 != value)
                 {
-                    RaisePropertyChanged("Preis4");
+                    NotifyPropertyChanged("Preis4");
                     _preis4 = value;
                 }
             }
@@ -705,7 +706,7 @@ namespace SeeMensa.ViewModels
             {
                 string priceToReturn = "";
 
-                switch (App.ViewModel.PriceType)
+                switch (MainViewModel.PriceType)
                 {
                     case PriceType.Guest:
                         priceToReturn = _preis3;
@@ -744,7 +745,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_einheit != value)
                 {
-                    RaisePropertyChanged("Einheit");
+                    NotifyPropertyChanged("Einheit");
                     _einheit = value;
                 }
             }
@@ -763,7 +764,7 @@ namespace SeeMensa.ViewModels
             {
                 if (_signs != value)
                 {
-                    RaisePropertyChanged("Signs");
+                    NotifyPropertyChanged("Signs");
                     _signs = value;
                 }
             }

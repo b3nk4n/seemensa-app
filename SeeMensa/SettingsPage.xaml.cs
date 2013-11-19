@@ -11,6 +11,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Scheduler;
+using SeeMensa.Common.ViewModels;
+using SeeMensa.Common;
 
 namespace SeeMensa
 {
@@ -50,7 +52,7 @@ namespace SeeMensa
         {
             this.lpMensas.SelectedIndex = App.ViewModel.MensaIndex;
 
-            switch (App.ViewModel.PriceType)
+            switch (MainViewModel.PriceType)
             {
                 case PriceType.Student:
                     rbStudent.IsChecked = true;
@@ -67,7 +69,21 @@ namespace SeeMensa
                 case PriceType.Pupil:
                     rbPupil.IsChecked = true;
                     break;
-            } 
+            }
+
+            // set periodic toggle state
+            if (IsPeriodicTaskActive(periodicTaskName))
+                BackgroundAgentToggle.IsChecked = true;
+            else
+                BackgroundAgentToggle.IsChecked = false;
+            BackgroundAgentToggle.Checked += (s, args) =>
+            {
+                StartPeriodicTask();
+            };
+            BackgroundAgentToggle.Unchecked += (s, args) =>
+            {
+                RemoveTask(periodicTaskName);
+            };
         }
 
         /// <summary>
@@ -118,10 +134,16 @@ namespace SeeMensa
         private void PriceChecked(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            App.ViewModel.PriceType = (PriceType) Enum.Parse(typeof(PriceType), (string)rb.Tag, true);
+            MainViewModel.PriceType = (PriceType) Enum.Parse(typeof(PriceType), (string)rb.Tag, true);
         }
 
-        private void StartPeriodicAgent()
+        private bool IsPeriodicTaskActive(string agentName)
+        {
+            var task = ScheduledActionService.Find(agentName) as PeriodicTask;
+            return task != null;
+        }
+
+        private void StartPeriodicTask()
         {
             // Variable for tracking enabled status of background agents for this app.
             agentsAreEnabled = true;
@@ -134,7 +156,7 @@ namespace SeeMensa
             // the schedule
             if (periodicTask != null)
             {
-                RemoveAgent(periodicTaskName);
+                RemoveTask(periodicTaskName);
             }
 
             periodicTask = new PeriodicTask(periodicTaskName);
@@ -168,16 +190,18 @@ namespace SeeMensa
                     // No user action required. The system prompts the user when the hard limit of periodic tasks has been reached.
 
                 }
+                BackgroundAgentToggle.IsChecked = false;
                 //PeriodicCheckBox.IsChecked = false;
             }
             catch (SchedulerServiceException)
             {
                 // No user action required.
                 //PeriodicCheckBox.IsChecked = false;
+                BackgroundAgentToggle.IsChecked = false;
             }
         }
 
-        private void RemoveAgent(string name)
+        private void RemoveTask(string name)
         {
             try
             {
@@ -186,16 +210,6 @@ namespace SeeMensa
             catch (Exception)
             {
             }
-        }
-
-        private void ToggleSwitch_Checked(object sender, RoutedEventArgs e)
-        {
-            StartPeriodicAgent();
-        }
-
-        private void ToggleSwitch_Unchecked(object sender, RoutedEventArgs e)
-        {
-            RemoveAgent(periodicTaskName);
         }
     }
 }

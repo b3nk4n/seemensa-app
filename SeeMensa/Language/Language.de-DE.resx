@@ -149,6 +149,10 @@
     <value>seeMENSA</value>
     <comment>Global</comment>
   </data>
+  <data name="BackgroundTask" xml:space="preserve">
+    <value>Automatische Live Tile aktualisierung</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="Canteen" xml:space="preserve">
     <value>Mensa</value>
     <comment>SettingsPage</comment>

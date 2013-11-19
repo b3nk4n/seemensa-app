@@ -43,7 +43,6 @@
         <!-- Language -->
         <language:LocalizedStrings x:Key="LocalizedString"/>
         <!-- Converters -->
-        <converter:OpeningConverter x:Key="openingConverter"/>
         <converter:TimeRangeConverter x:Key="timeRangeConverter"/>
     </phone:PhoneApplicationPage.Resources>
 

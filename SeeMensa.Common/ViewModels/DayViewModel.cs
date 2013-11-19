@@ -10,8 +10,9 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Collections.ObjectModel;
+using PhoneKit.Framework.MVVM;
 
-namespace SeeMensa.ViewModels
+namespace SeeMensa.Common.ViewModels
 {
     public class DayViewModel : ViewModelBase
     {
@@ -101,7 +102,7 @@ namespace SeeMensa.ViewModels
                 if (value != _day)
                 {
                     _day = value;
-                    RaisePropertyChanged("Day");
+                    NotifyPropertyChanged("Day");
                 }
             }
         }

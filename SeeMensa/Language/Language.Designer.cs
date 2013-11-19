@@ -133,6 +133,15 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automated Live Tile updates.
+        /// </summary>
+        public static string BackgroundTask {
+            get {
+                return ResourceManager.GetString("BackgroundTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Canteen.
         /// </summary>
         public static string Canteen {
