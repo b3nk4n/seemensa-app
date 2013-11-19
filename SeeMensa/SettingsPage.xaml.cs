@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Scheduler;
 
 namespace SeeMensa
 {
@@ -22,6 +23,10 @@ namespace SeeMensa
         /// The selected mensa index, when opening the settings menu.
         /// </summary>
         private int _initialMensaIndex;
+
+        private PeriodicTask periodicTask;
+        private const string periodicTaskName = "seeMENSA Background Task";
+        public bool agentsAreEnabled = true;
 
         /// <summary>
         /// Creates a new settings page.
@@ -114,6 +119,83 @@ namespace SeeMensa
         {
             RadioButton rb = sender as RadioButton;
             App.ViewModel.PriceType = (PriceType) Enum.Parse(typeof(PriceType), (string)rb.Tag, true);
+        }
+
+        private void StartPeriodicAgent()
+        {
+            // Variable for tracking enabled status of background agents for this app.
+            agentsAreEnabled = true;
+
+            // Obtain a reference to the period task, if one exists
+            periodicTask = ScheduledActionService.Find(periodicTaskName) as PeriodicTask;
+
+            // If the task already exists and background agents are enabled for the
+            // application, you must remove the task and then add it again to update 
+            // the schedule
+            if (periodicTask != null)
+            {
+                RemoveAgent(periodicTaskName);
+            }
+
+            periodicTask = new PeriodicTask(periodicTaskName);
+
+            // The description is required for periodic agents. This is the string that the user
+            // will see in the background services Settings page on the device.
+            periodicTask.Description = "Updates the live tile periodically.";
+
+            // Place the call to Add in a try block in case the user has disabled agents.
+            try
+            {
+                ScheduledActionService.Add(periodicTask);
+                //PeriodicStackPanel.DataContext = periodicTask;
+
+                // If debugging is enabled, use LaunchForTest to launch the agent in one minute.
+#if(DEBUG)
+                ScheduledActionService.LaunchForTest(periodicTaskName, TimeSpan.FromSeconds(60));
+#endif
+            }
+            catch (InvalidOperationException exception)
+            {
+                if (exception.Message.Contains("BNS Error: The action is disabled"))
+                {
+                    MessageBox.Show("Background agents for this application have been disabled by the user.");
+                    agentsAreEnabled = false;
+                    //PeriodicCheckBox.IsChecked = false;
+                }
+
+                if (exception.Message.Contains("BNS Error: The maximum number of ScheduledActions of this type have already been added."))
+                {
+                    // No user action required. The system prompts the user when the hard limit of periodic tasks has been reached.
+
+                }
+                //PeriodicCheckBox.IsChecked = false;
+            }
+            catch (SchedulerServiceException)
+            {
+                // No user action required.
+                //PeriodicCheckBox.IsChecked = false;
+            }
+        }
+
+        private void RemoveAgent(string name)
+        {
+            try
+            {
+                ScheduledActionService.Remove(name);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void ToggleSwitch_Checked(object sender, RoutedEventArgs e)
+        {
+            StartPeriodicAgent();
+        }
+
+        private void ToggleSwitch_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RemoveAgent(periodicTaskName);
         }
     }
 }
