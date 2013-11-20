@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Collections.ObjectModel;
-using PhoneKit.Framework.MVVM;
+using PhoneKit.Framework.Core.MVVM;
 
 namespace SeeMensa.Common.ViewModels
 {

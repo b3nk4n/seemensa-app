@@ -14,9 +14,8 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Xml.Linq;
 using System.IO;
-using PhoneKit.Framework.MVVM;
 using System.Globalization;
-
+using PhoneKit.Framework.Core.MVVM;
 
 namespace SeeMensa.Common.ViewModels
 {

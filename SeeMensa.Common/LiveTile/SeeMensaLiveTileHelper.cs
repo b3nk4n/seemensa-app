@@ -1,7 +1,7 @@
 ﻿using Microsoft.Phone.Shell;
-using PhoneKit.Framework.Graphics;
-using PhoneKit.Framework.Storage;
-using PhoneKit.Framework.Tile;
+using PhoneKit.Framework.Core.Graphics;
+using PhoneKit.Framework.Core.Storage;
+using PhoneKit.Framework.Core.Tile;
 using SeeMensa.Common.Controls;
 using SeeMensa.Common.ViewModels;
 using System;
