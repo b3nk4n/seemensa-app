@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Scheduler;
 using SeeMensa.Common.ViewModels;
 using SeeMensa.Common;
+using PhoneKit.Framework.Tasks;
 
 namespace SeeMensa
 {
@@ -26,9 +27,10 @@ namespace SeeMensa
         /// </summary>
         private int _initialMensaIndex;
 
-        private PeriodicTask periodicTask;
-        private const string periodicTaskName = "seeMENSA Background Task";
-        public bool agentsAreEnabled = true;
+        /// <summary>
+        /// The background tasks name.
+        /// </summary>
+        private const string TAKS_NAME = "seeMENSABackgroundTask";
 
         /// <summary>
         /// Creates a new settings page.
@@ -72,17 +74,23 @@ namespace SeeMensa
             }
 
             // set periodic toggle state
-            if (IsPeriodicTaskActive(periodicTaskName))
+            if (BackgroundTaskHelper.IsTaskActive(TAKS_NAME))
                 BackgroundAgentToggle.IsChecked = true;
             else
                 BackgroundAgentToggle.IsChecked = false;
             BackgroundAgentToggle.Checked += (s, args) =>
             {
-                StartPeriodicTask();
+                var task = new PeriodicTask(TAKS_NAME)
+                {
+                    Description = "Updates the Live Tile periodically and loads the canteen data if required."
+                };
+
+                bool result = BackgroundTaskHelper.StartTask(task);
+                BackgroundAgentToggle.IsChecked = result;
             };
             BackgroundAgentToggle.Unchecked += (s, args) =>
             {
-                RemoveTask(periodicTaskName);
+                BackgroundTaskHelper.RemoveTask(TAKS_NAME);
             };
         }
 
@@ -137,77 +145,6 @@ namespace SeeMensa
         {
             RadioButton rb = sender as RadioButton;
             MainViewModel.Instance.PriceType = (PriceType)Enum.Parse(typeof(PriceType), (string)rb.Tag, true);
-        }
-
-        private bool IsPeriodicTaskActive(string agentName)
-        {
-            var task = ScheduledActionService.Find(agentName) as PeriodicTask;
-            return task != null && task.IsScheduled;
-        }
-
-        private void StartPeriodicTask()
-        {
-            // Variable for tracking enabled status of background agents for this app.
-            agentsAreEnabled = true;
-
-            // Obtain a reference to the period task, if one exists
-            periodicTask = ScheduledActionService.Find(periodicTaskName) as PeriodicTask;
-
-            // If the task already exists and background agents are enabled for the
-            // application, you must remove the task and then add it again to update 
-            // the schedule
-            if (periodicTask != null)
-            {
-                RemoveTask(periodicTaskName);
-            }
-
-            periodicTask = new PeriodicTask(periodicTaskName);
-
-            // The description is required for periodic agents. This is the string that the user
-            // will see in the background services Settings page on the device.
-            periodicTask.Description = "Updates the live tile periodically.";
-
-            // Place the call to Add in a try block in case the user has disabled agents.
-            try
-            {
-                ScheduledActionService.Add(periodicTask);
-                
-                // If debugging is enabled, use LaunchForTest to launch the agent in one minute.
-#if(DEBUG)
-                ScheduledActionService.LaunchForTest(periodicTaskName, TimeSpan.FromSeconds(60));
-#endif
-            }
-            catch (InvalidOperationException exception)
-            {
-                if (exception.Message.Contains("BNS Error: The action is disabled"))
-                {
-                    MessageBox.Show("Background agents for this application have been disabled.");
-                    agentsAreEnabled = false;
-                }
-
-                if (exception.Message.Contains("BNS Error: The maximum number of ScheduledActions of this type have already been added."))
-                {
-                    // No user action required. The system prompts the user when the hard limit of periodic tasks has been reached.
-
-                }
-                BackgroundAgentToggle.IsChecked = false;
-            }
-            catch (SchedulerServiceException)
-            {
-                // No user action required.
-                BackgroundAgentToggle.IsChecked = false;
-            }
-        }
-
-        private void RemoveTask(string name)
-        {
-            try
-            {
-                ScheduledActionService.Remove(name);
-            }
-            catch (Exception)
-            {
-            }
         }
     }
 }

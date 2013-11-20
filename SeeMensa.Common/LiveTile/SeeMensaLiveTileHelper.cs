@@ -22,10 +22,24 @@ namespace SeeMensa.Common.LiveTile
             LiveTileHelper.ClearStorage();
 
             IList<Uri> images = CreateLiveTileImages();
+
+            // schedule default logo, if no meal image could be created.
             if (images.Count > 0)
             {
                 LiveTileHelper.UpdateDefaultTile(new CycleTileData
                 {
+                    CycleImages = images,
+                    SmallBackgroundImage = MainViewModel.Instance.CurrentMensaItem.ImageUri
+                });
+            }
+            else
+            {
+                //images.Add(new Uri("/FlipCycleTileLarge.png", UriKind.Relative));
+                images.Add(MainViewModel.Instance.CurrentMensaItem.ImageUri);
+
+                LiveTileHelper.UpdateDefaultTile(new CycleTileData
+                {
+                    Title = "seeMENSA",
                     CycleImages = images,
                     SmallBackgroundImage = MainViewModel.Instance.CurrentMensaItem.ImageUri
                 });
@@ -39,19 +53,23 @@ namespace SeeMensa.Common.LiveTile
         private static IList<Uri> CreateLiveTileImages()
         {
             IList<Uri> images = new List<Uri>();
-            var day = MainViewModel.Instance.Days[0];
 
-            LiveTileHelper.ClearStorage();
-
-            for (int i = 0; i < MainViewModel.Instance.Days[0].Meals.Count; ++i)
+            if (MainViewModel.Instance.Days.Count > 0)
             {
-                var image = GraphicsHelper.Create(
-                    new MealNormalTileControl(
-                        day.Meals[i].Category,
-                        day.Meals[i].Title,
-                        MainViewModel.Instance.CurrentMensaItem.ImageUri.OriginalString));
-                images.Add(StorageHelper.SaveJpeg(
-                    LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile{0}.jpeg", i), image));
+                var day = MainViewModel.Instance.Days[0];
+
+                LiveTileHelper.ClearStorage();
+
+                for (int i = 0; i < MainViewModel.Instance.Days[0].Meals.Count && i < 8; ++i)
+                {
+                    var image = GraphicsHelper.Create(
+                        new MealNormalTileControl(
+                            day.Meals[i].Category,
+                            day.Meals[i].Title,
+                            MainViewModel.Instance.CurrentMensaItem.ImageUri.OriginalString));
+                    images.Add(StorageHelper.SaveJpeg(
+                        LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile{0}.jpeg", i), image));
+                }
             }
 
             return images;

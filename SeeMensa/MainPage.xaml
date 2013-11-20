@@ -55,7 +55,7 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0">
             <fwad:DoubleClickAdControl x:Name="WebBanner" Height="0" AutoStart="False"
-                BannerUri="http://bsautermeister.de/seemensa/advertising/seemensa_3_1_sc.html" />
+                BannerUri="http://bsautermeister.de/seemensa/advertising/seemensa_3_1.html" />
         </StackPanel>
         
         <!--ContentPanel contains ListBox and ListBox ItemTemplate. Place additional content here-->
