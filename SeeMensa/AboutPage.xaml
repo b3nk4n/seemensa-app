@@ -62,6 +62,7 @@
             <framework:AboutControl ApplicationIconSource="/ApplicationIcon.png"
                 ApplicationTitle="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}"
                 ApplicationAuthor="{Binding Path=LocalizedString.ApplicationAuthor,Source={StaticResource LocalizedString}}"
+                ApplicationVersion="v 3.1"
                 ApplicationDescription ="{Binding Path=LocalizedString.ApplicationDescription,Source={StaticResource LocalizedString}}"
                 SupportAndFeedbackText="{Binding Path=LocalizedString.SupportAndFeedback,Source={StaticResource LocalizedString}}" SupportAndFeedbackEmail="apps@bsautermeister.de"
                 PrivacyInfoText="{Binding Path=LocalizedString.PrivacyInfo,Source={StaticResource LocalizedString}}" PrivacyInfoLink="http://bsautermeister.de/privacy.php"
