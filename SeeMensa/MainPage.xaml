@@ -62,7 +62,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,-35,0,0">
             <phone:Panorama x:Name="panMeals" ItemsSource="{Binding Days}">
                 <phone:Panorama.Title>
-                    <TextBlock Text="{Binding CurrentMensaName}" FontSize="76" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Margin="0,50,0,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                    <TextBlock Text="{Binding CurrentMensaName}" FontSize="76" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Margin="8,50,0,0" Foreground="{StaticResource PhoneAccentBrush}"/>
                 </phone:Panorama.Title>
                 <phone:Panorama.HeaderTemplate>
                     <DataTemplate>
@@ -109,6 +109,10 @@
                 </phone:Panorama.ItemTemplate>
             </phone:Panorama>
         </Grid>
+
+        <!-- Feedback dialog -->
+        <local:LocalizedFeedbackDialogControl Grid.RowSpan="2" EnableAnimation="True" />
+
     </Grid>
  
     <!--ApplicationBar-->

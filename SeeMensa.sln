@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeMensa", "SeeMensa\SeeMensa.csproj", "{142D94B0-DB04-4E94-8F6E-3ED5625B7E8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeMensa.Scheduler", "SeeMensa.Scheduler\SeeMensa.Scheduler.csproj", "{DF7256BD-A603-438E-BE06-882541211CFB}"

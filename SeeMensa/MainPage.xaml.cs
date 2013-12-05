@@ -1,9 +1,12 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
+using PhoneKit.Framework.Core.Storage;
+using PhoneKit.Framework.Support;
 using SeeMensa.Common.LiveTile;
 using SeeMensa.Common.ViewModels;
 using System;
 using System.Globalization;
+using System.IO;
 using System.Net;
 using System.Windows;
 using System.Windows.Navigation;
@@ -36,6 +39,20 @@ namespace SeeMensa
 
             // Set the data context of the listbox control to the sample data
             DataContext = MainViewModel.Instance;
+
+            StartupActionManager.Instance.Register(1, ActionExecutionRule.Equals, () =>
+                {
+                    // ensure the icons are copied properly in isolated storage at first startup
+                    if (!StorageHelper.FileExists("Images/htwgkn.png"))
+                        StorageHelper.SaveFileFromStream("Images/htwgkn.png", new FileStream("Images/htwgkn.png", FileMode.Open));
+                    if (!StorageHelper.FileExists("Images/unikn.png"))
+                        StorageHelper.SaveFileFromStream("Images/unikn.png", new FileStream("Images/unikn.png", FileMode.Open));
+                    if (!StorageHelper.FileExists("Images/unifn.png"))
+                        StorageHelper.SaveFileFromStream("Images/unifn.png", new FileStream("Images/unifn.png", FileMode.Open));
+                    if (!StorageHelper.FileExists("Images/phwg.png"))
+                        StorageHelper.SaveFileFromStream("Images/phwg.png", new FileStream("Images/phwg.png", FileMode.Open));
+                });
+            StartupActionManager.Instance.Fire();
         }
 
         /// <summary>
@@ -44,11 +61,11 @@ namespace SeeMensa
         private void localizeAppBar()
         {
             ((Microsoft.Phone.Shell.ApplicationBarIconButton)this.ApplicationBar.Buttons[0]).Text = SeeMensa.Language.Language.AppBarRefresh;
-            ((Microsoft.Phone.Shell.ApplicationBarIconButton)this.ApplicationBar.Buttons[1]).Text = SeeMensa.Language.Language.SettingsTitle;
+            ((Microsoft.Phone.Shell.ApplicationBarIconButton)this.ApplicationBar.Buttons[1]).Text = SeeMensa.Language.Language.AppBarSettings;
             ((Microsoft.Phone.Shell.ApplicationBarIconButton)this.ApplicationBar.Buttons[2]).Text = SeeMensa.Language.Language.AppBarMensaInfo;
-            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text = SeeMensa.Language.Language.InAppStoreTitle;
+            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text = SeeMensa.Language.Language.AppBarStore;
             ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[1]).Text = SeeMensa.Language.Language.AppBarWin8;
-            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[2]).Text = SeeMensa.Language.Language.AboutTitle;
+            ((Microsoft.Phone.Shell.ApplicationBarMenuItem)this.ApplicationBar.MenuItems[2]).Text = SeeMensa.Language.Language.AppBarAbout;
         }
 
         /// <summary>
@@ -110,7 +127,6 @@ namespace SeeMensa
             }
             else
             {
-                // this.DataContext = null; (CAUSED THIS THE CRASH BUG !?!?!)
                 this.refresh();
             }
         }

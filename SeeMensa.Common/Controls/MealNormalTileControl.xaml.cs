@@ -2,6 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.IO;
+using System.Diagnostics;
+using System;
+using PhoneKit.Framework.Core.Storage;
 
 namespace SeeMensa.Common.Controls
 {
@@ -23,21 +26,33 @@ namespace SeeMensa.Common.Controls
         /// </summary>
         /// <param name="title">The meal title.</param>
         /// <param name="description">The meal description text.</param>
+        /// <param name="iconStream">The stream to the icon image</param>
         public MealNormalTileControl(string title, string description, string iconPath)
             : this()
         {
             this.Title.Text = title;
             this.Description.Text = description;
-
+            
             // set image source in code, because the XAML implementation is asyc,
             // so it is not going to be rendered.
             BitmapImage bmi = new BitmapImage();
             bmi.CreateOptions = BitmapCreateOptions.None;
 
-            using (var file = new FileStream(iconPath, FileMode.Open))
+            // load the image stream from isolated storage
+            using (var iconStream = StorageHelper.GetFileStream(iconPath))
             {
-                bmi.SetSource(file);
-                Icon.Source = bmi;
+                if (iconStream == null)
+                    return;
+
+                try
+                {
+                    bmi.SetSource(iconStream);
+                    Icon.Source = bmi;
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Setting the tiles icon image failed. Error: " + e.Message);
+                }
             }
         }
     }

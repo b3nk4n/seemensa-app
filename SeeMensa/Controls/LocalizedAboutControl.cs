@@ -10,11 +10,11 @@ namespace SeeMensa.Controls
         {
             ApplicationIconSource = new Uri("/Images/seeMENSA.png", UriKind.Relative);
             ApplicationTitle = SeeMensa.Language.Language.ApplicationTitle;
-            ApplicationVersion = "3.2";
+            ApplicationVersion = SeeMensa.Language.Language.ApplicationVersion;
             ApplicationAuthor = SeeMensa.Language.Language.ApplicationAuthor;
             ApplicationDescription = SeeMensa.Language.Language.ApplicationDescription;
             SupportAndFeedbackText = SeeMensa.Language.Language.SupportAndFeedback;
-            SupportAndFeedbackEmail = "apps@bsautermeister.de";
+            SupportAndFeedbackEmail = SeeMensa.Language.Language.FeedbackEmail;
             PrivacyInfoText = SeeMensa.Language.Language.PrivacyInfo;
             PrivacyInfoLink = "http://bsautermeister.de/privacy.php";
             RateAndReviewText = SeeMensa.Language.Language.RateAndReview;

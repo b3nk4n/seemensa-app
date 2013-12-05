@@ -10,7 +10,7 @@ namespace SeeMensa.Controls
     /// <summary>
     /// The localized in-app store control.
     /// </summary>
-    class LocalizedInAppStoreControl : InAppStoreControlBase
+    public class LocalizedInAppStoreControl : InAppStoreControlBase
     {
         /// <summary>
         /// Localizes the user control content and texts.

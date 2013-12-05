@@ -125,16 +125,28 @@
     <value>Adresse</value>
     <comment>InfoPage</comment>
   </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>hilfe</value>
+    <comment>AppBar</comment>
+  </data>
   <data name="AppBarMensaInfo" xml:space="preserve">
     <value>mensa</value>
-    <comment>MainPage</comment>
+    <comment>AppBar</comment>
   </data>
   <data name="AppBarRefresh" xml:space="preserve">
     <value>aktual.</value>
-    <comment>MainPage</comment>
+    <comment>AppBar</comment>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>einstell.</value>
+    <comment>AppBar</comment>
+  </data>
+  <data name="AppBarStore" xml:space="preserve">
+    <value>in-app store</value>
+    <comment>AppBar</comment>
   </data>
   <data name="AppBarWin8" xml:space="preserve">
-    <value>seeMENSA für Windows 8</value>
+    <value>seemensa für windows 8</value>
     <comment>AppBar</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
@@ -148,6 +160,10 @@
   <data name="ApplicationTitle" xml:space="preserve">
     <value>seeMENSA</value>
     <comment>Global</comment>
+  </data>
+  <data name="ApplicationVersion" xml:space="preserve">
+    <value>3.2</value>
+    <comment>General</comment>
   </data>
   <data name="BackgroundTask" xml:space="preserve">
     <value>Live Tile Hintergrundsdienst</value>
@@ -164,6 +180,45 @@
   <data name="Employee" xml:space="preserve">
     <value>Mitarbeiter</value>
     <comment>SettingsPage</comment>
+  </data>
+  <data name="FeedbackBodyText" xml:space="preserve">
+    <value>[Dein Feedback hier]
+
+
+---------------------------------
+Device Name: {0}
+Device Manufacturer: {1}
+Device Firmware Version: {2}
+Device Hardware Version: {3}
+Application Version: {4}
+---------------------------------</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="FeedbackEmail" xml:space="preserve">
+    <value>apps@bsautermeister.de</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="FeedbackMessageText" xml:space="preserve">
+    <value>Schade dass Sie seeMENSA nicht bewerten wollen.
+
+Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, damit wir seeMENSA noch besser machen können.</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="FeedbackNoText" xml:space="preserve">
+    <value>nein danke</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="FeedbackSubject" xml:space="preserve">
+    <value>seeMENSA Feedback </value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="FeedbackTitleText" xml:space="preserve">
+    <value>Können wir es besser machen?</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="FeedbackYesText" xml:space="preserve">
+    <value>feedback abgeben</value>
+    <comment>FeedbackDialogControl</comment>
   </data>
   <data name="ForWindowsPhone7" xml:space="preserve">
     <value>für Windows Phone</value>
@@ -268,6 +323,30 @@
   <data name="RateAndReview" xml:space="preserve">
     <value>bewerten</value>
     <comment>AboutPage</comment>
+  </data>
+  <data name="RatingMessage10Text" xml:space="preserve">
+    <value>You look to be getting a lot of use out of our application!
+
+Why not give us a 5 star rating to show your appreciation?</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="RatingMessage5Text" xml:space="preserve">
+    <value>Wir würden uns freuen, wenn Sie unsere App mit 5 Sternen bewerten.
+
+Das würde uns sehr motivieren um die App noch besser zu machen!</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="RatingNoText" xml:space="preserve">
+    <value>nein danke</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="RatingTitleText" xml:space="preserve">
+    <value>Gefällt Ihnen seeMENSA?</value>
+    <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="RatingYesText" xml:space="preserve">
+    <value>5 Sterne bewerten</value>
+    <comment>FeedbackDialogControl</comment>
   </data>
   <data name="Review" xml:space="preserve">
     <value>Bitte hier tippen um um diese App zu bewerten!</value>
