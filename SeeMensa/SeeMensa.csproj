@@ -112,13 +112,6 @@
     <Reference Include="PhoneKit.Framework.Core">
       <HintPath>..\libs\PhoneKit.Framework.Core.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Interactivity, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
-    <Reference Include="TileClickEffect">
-      <HintPath>Lib\TileClickEffect.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutPage.xaml.cs">
@@ -128,6 +121,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LocalizedAboutControl.cs" />
+    <Compile Include="Controls\LocalizedInAppStoreControl.cs" />
     <Compile Include="Controls\MealTypeControl.xaml.cs">
       <DependentUpon>MealTypeControl.xaml</DependentUpon>
     </Compile>
@@ -228,8 +223,9 @@
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
-    <Resource Include="Images\seeMENSA.png" />
-    <Resource Include="Images\seeMENSA_grey.png" />
+    <Content Include="Images\seeMENSA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\beef.png" />
     <Content Include="Images\fish.png" />
     <Content Include="Images\lamp.png" />

@@ -10,7 +10,7 @@
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:c="clr-namespace:TileClickEffect;assembly=TileClickEffect"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:framework="clr-namespace:PhoneKit.Framework.Controls;assembly=PhoneKit.Framework"
+    xmlns:lc="clr-namespace:SeeMensa.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -59,15 +59,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <framework:AboutControl ApplicationIconSource="/ApplicationIcon.png"
-                ApplicationTitle="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}"
-                ApplicationAuthor="{Binding Path=LocalizedString.ApplicationAuthor,Source={StaticResource LocalizedString}}"
-                ApplicationVersion="v 3.1"
-                ApplicationDescription ="{Binding Path=LocalizedString.ApplicationDescription,Source={StaticResource LocalizedString}}"
-                SupportAndFeedbackText="{Binding Path=LocalizedString.SupportAndFeedback,Source={StaticResource LocalizedString}}" SupportAndFeedbackEmail="apps@bsautermeister.de"
-                PrivacyInfoText="{Binding Path=LocalizedString.PrivacyInfo,Source={StaticResource LocalizedString}}" PrivacyInfoLink="http://bsautermeister.de/privacy.php"
-                RateAndReviewText="{Binding Path=LocalizedString.RateAndReview,Source={StaticResource LocalizedString}}"
-                MoreAppsText="{Binding Path=LocalizedString.MoreApps,Source={StaticResource LocalizedString}}" MoreAppsSearchTerms="Benjamin Sautermeister"/>
+            <lc:LocalizedAboutControl />
         </Grid>
     </Grid>
 </phone:PhoneApplicationPage>

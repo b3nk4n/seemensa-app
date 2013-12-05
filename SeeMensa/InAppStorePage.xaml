@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:language="clr-namespace:SeeMensa.Language"
-    xmlns:framework="clr-namespace:PhoneKit.Framework.Controls;assembly=PhoneKit.Framework"
+    xmlns:lc="clr-namespace:SeeMensa.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -59,11 +59,7 @@
         </StackPanel>
 
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <framework:InAppStoreControl x:Name="InAppStore"
-                InAppStoreLoadingText="{Binding Path=LocalizedString.InAppStoreLoading,Source={StaticResource LocalizedString}}"
-                InAppStoreNoProductsText="{Binding Path=LocalizedString.InAppStoreNoProducts,Source={StaticResource LocalizedString}}"
-                InAppStorePurchasedText="{Binding Path=LocalizedString.InAppStorePurchased,Source={StaticResource LocalizedString}}"
-                SupportedProductIds="ad_free,donate"/>
+            <lc:LocalizedInAppStoreControl />
         </Grid>
 
     </Grid>
