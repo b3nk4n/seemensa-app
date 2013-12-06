@@ -17,11 +17,11 @@ namespace SeeMensa.Common.LiveTile
         /// <summary>
         /// Updates the live tile.
         /// </summary>
-        public static void UpdateLiveTiles(string xxx = "default")
+        public static void UpdateLiveTiles()
         {
             LiveTileHelper.ClearStorage();
 
-            IList<Uri> images = CreateLiveTileImages(xxx);
+            IList<Uri> images = CreateLiveTileImages();
 
             // schedule default logo, if no meal image could be created.
             if (images.Count > 0)
@@ -34,7 +34,6 @@ namespace SeeMensa.Common.LiveTile
             }
             else
             {
-                //images.Add(new Uri("/FlipCycleTileLarge.png", UriKind.Relative));
                 images.Add(MainViewModel.Instance.CurrentMensaItem.ImageUri);
 
                 LiveTileHelper.UpdateDefaultTile(new CycleTileData
@@ -50,7 +49,7 @@ namespace SeeMensa.Common.LiveTile
         /// Creates live tile images from mensa data.
         /// </summary>
         /// <returns>The list of images.</returns>
-        private static IList<Uri> CreateLiveTileImages(string xxx)
+        private static IList<Uri> CreateLiveTileImages()
         {
             IList<Uri> images = new List<Uri>();
 
@@ -65,7 +64,7 @@ namespace SeeMensa.Common.LiveTile
                     var image = GraphicsHelper.Create(
                         new MealNormalTileControl(
                             day.Meals[i].Category,
-                            xxx,//day.Meals[i].Title,
+                            day.Meals[i].Title,
                             MainViewModel.Instance.CurrentMensaItem.ImageUri.OriginalString));
                     images.Add(StorageHelper.SaveJpeg(
                         LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile{0}.jpeg", i), image));

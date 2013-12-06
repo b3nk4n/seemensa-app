@@ -11,7 +11,7 @@
     Height="336" Width="336">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneAccentBrush}">
-        <Border Margin="52,110,52,16">
+        <Border Margin="58,110,58,16">
             <Grid>
                 <Image x:Name="Icon" Width="48" Height="48" Margin="0,-5,12,0"
                        VerticalAlignment="Top" HorizontalAlignment="Right" />

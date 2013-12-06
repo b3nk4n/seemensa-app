@@ -137,7 +137,7 @@ namespace SeeMensa.Scheduler
 
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-                SeeMensaLiveTileHelper.UpdateLiveTiles("BACKGROUND");
+                SeeMensaLiveTileHelper.UpdateLiveTiles();
                 MainViewModel.Instance.LastTileUpdate = DateTime.Now;
             });
         }
