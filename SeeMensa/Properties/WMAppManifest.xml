@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="de-DE" />
   </Languages>
-  <App xmlns="" ProductID="{8bf87c6a-bf51-4145-b684-8df5c8419ba2}" Title="seeMENSA" RuntimeType="Silverlight" Version="3.0.0.0" Genre="apps.normal" Author="Benjamin Sautermeister" Description="seeMENSA vereinfach das auslesen der Mensapläne in der Bodenseeregion." Publisher="B. Sautermeister" PublisherID="{966dc892-ae65-4cd6-99c9-89b0083358f7}">
+  <App xmlns="" ProductID="{8bf87c6a-bf51-4145-b684-8df5c8419ba2}" Title="seeMENSA" RuntimeType="Silverlight" Version="3.4.0.0" Genre="apps.normal" Author="Benjamin Sautermeister" Description="seeMENSA vereinfach das auslesen der Mensapläne in der Bodenseeregion." Publisher="B. Sautermeister" PublisherID="{966dc892-ae65-4cd6-99c9-89b0083358f7}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

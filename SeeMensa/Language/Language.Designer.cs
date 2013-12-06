@@ -160,7 +160,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.3.
+        ///   Looks up a localized string similar to 3.4.
         /// </summary>
         public static string ApplicationVersion {
             get {
