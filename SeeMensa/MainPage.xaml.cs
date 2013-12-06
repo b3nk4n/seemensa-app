@@ -79,12 +79,53 @@ namespace SeeMensa
             MainViewModel.Instance.PanoramaIndex = panMeals.SelectedIndex;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (!string.IsNullOrEmpty(MainViewModel.Instance.Xml))
+            {
+                DateTime now = DateTime.Now;
+                DateTime lastUpdate = MainViewModel.Instance.LastUpdate;
+
+                TimeSpan delay = now.Subtract(lastUpdate);
+
+                if (delay.TotalDays >= 7)
+                {
+                    this.refresh();
+                }
+                else
+                {
+                    // no loading of content if it was just a navigation inside the app
+                    if (e.IsNavigationInitiator)
+                        return;
+
+                    this.updatePanaroamaControl(MainViewModel.Instance.Xml);
+
+                    this.DataContext = MainViewModel.Instance;
+
+                    // Sets the default/current item (new in Version 1.3)
+                    if (MainViewModel.Instance.PanoramaIndex >= 0 &&
+                        MainViewModel.Instance.PanoramaIndex < panMeals.Items.Count)
+                    {
+                        panMeals.DefaultItem = panMeals.Items[MainViewModel.Instance.PanoramaIndex];
+                    }
+
+                    this.updateAppBar();
+                }
+            }
+            else
+            {
+                this.refresh();
+            }
+        }
+
         /// <summary>
         /// Load data for the ViewModel Items.
         /// </summary>
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(MainViewModel.Instance.Xml))
+            /*if (!string.IsNullOrEmpty(MainViewModel.Instance.Xml))
             {
                 DateTime now = DateTime.Now;
                 DateTime lastUpdate = MainViewModel.Instance.LastUpdate;
@@ -114,7 +155,7 @@ namespace SeeMensa
             else
             {
                 this.refresh();
-            }
+            }*/
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
