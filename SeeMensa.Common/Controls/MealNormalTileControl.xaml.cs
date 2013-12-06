@@ -5,6 +5,7 @@ using System.IO;
 using System.Diagnostics;
 using System;
 using PhoneKit.Framework.Core.Storage;
+using System.Windows.Resources;
 
 namespace SeeMensa.Common.Controls
 {
@@ -38,22 +39,11 @@ namespace SeeMensa.Common.Controls
             BitmapImage bmi = new BitmapImage();
             bmi.CreateOptions = BitmapCreateOptions.None;
 
-            // load the image stream from isolated storage
-            using (var iconStream = StorageHelper.GetFileStream(iconPath))
-            {
-                if (iconStream == null)
-                    return;
-
-                try
-                {
-                    bmi.SetSource(iconStream);
-                    Icon.Source = bmi;
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine("Setting the tiles icon image failed. Error: " + e.Message);
-                }
-            }
+            Uri uri = new Uri("/SeeMensa.Common;component/" + iconPath, UriKind.Relative);
+            StreamResourceInfo resourceInfo = Application.GetResourceStream(uri);
+            BitmapImage bmp = new BitmapImage();
+            bmp.SetSource(resourceInfo.Stream);
+            Icon.Source = bmp;
         }
     }
 }

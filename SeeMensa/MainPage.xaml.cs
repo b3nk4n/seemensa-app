@@ -39,20 +39,6 @@ namespace SeeMensa
 
             // Set the data context of the listbox control to the sample data
             DataContext = MainViewModel.Instance;
-
-            StartupActionManager.Instance.Register(1, ActionExecutionRule.Equals, () =>
-                {
-                    // ensure the icons are copied properly in isolated storage at first startup
-                    if (!StorageHelper.FileExists("Images/htwgkn.png"))
-                        StorageHelper.SaveFileFromStream("Images/htwgkn.png", new FileStream("Images/htwgkn.png", FileMode.Open));
-                    if (!StorageHelper.FileExists("Images/unikn.png"))
-                        StorageHelper.SaveFileFromStream("Images/unikn.png", new FileStream("Images/unikn.png", FileMode.Open));
-                    if (!StorageHelper.FileExists("Images/unifn.png"))
-                        StorageHelper.SaveFileFromStream("Images/unifn.png", new FileStream("Images/unifn.png", FileMode.Open));
-                    if (!StorageHelper.FileExists("Images/phwg.png"))
-                        StorageHelper.SaveFileFromStream("Images/phwg.png", new FileStream("Images/phwg.png", FileMode.Open));
-                });
-            StartupActionManager.Instance.Fire();
         }
 
         /// <summary>

@@ -162,7 +162,7 @@
     <comment>Global</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>3.2</value>
+    <value>3.2.2</value>
     <comment>General</comment>
   </data>
   <data name="BackgroundTask" xml:space="preserve">
@@ -217,7 +217,7 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>feedback abgeben</value>
+    <value>feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="ForWindowsPhone7" xml:space="preserve">
@@ -325,9 +325,9 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>You look to be getting a lot of use out of our application!
+    <value>Es scheint als ob seeMENSA Ihnen sehr gefällt!
 
-Why not give us a 5 star rating to show your appreciation?</value>
+Warum geben Sie uns nicht eine 5 Sterne Bewertung um zu zeigen, dass Sie unsere Arbeit zu schätzen wissen?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
@@ -345,7 +345,7 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>5 Sterne bewerten</value>
+    <value>bewerten</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="Review" xml:space="preserve">

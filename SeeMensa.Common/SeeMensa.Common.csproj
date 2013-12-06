@@ -105,6 +105,12 @@
       <HintPath>..\libs\PhoneKit.Framework.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\htwgkn.png" />
+    <Resource Include="Images\phwg.png" />
+    <Resource Include="Images\unifn.png" />
+    <Resource Include="Images\unikn.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />
