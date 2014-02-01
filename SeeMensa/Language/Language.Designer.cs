@@ -160,7 +160,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.4.
+        ///   Looks up a localized string similar to 3.5.
         /// </summary>
         public static string ApplicationVersion {
             get {
@@ -232,7 +232,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry to hear you didn&apos;t want to rate MyApp.
+        ///   Looks up a localized string similar to Sorry to hear you didn&apos;t want to rate seeMENSA.
         ///
         ///Tell us about your experience or suggest how we can make it even better..
         /// </summary>
@@ -252,7 +252,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MyApp Customer Feedback .
+        ///   Looks up a localized string similar to seeMENSA Customer Feedback .
         /// </summary>
         public static string FeedbackSubject {
             get {
@@ -544,7 +544,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enjoying MyApp?.
+        ///   Looks up a localized string similar to Enjoying seeMENSA?.
         /// </summary>
         public static string RatingTitleText {
             get {

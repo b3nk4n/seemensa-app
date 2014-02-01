@@ -160,7 +160,20 @@ namespace SeeMensa.Common.ViewModels
         /// <param name="onlyToday">Optimization, if only the todays meals are needed.</param>
         public void CreateFromXml(string xml, bool onlyToday = false)
         {
-            XDocument xmlDoc = XDocument.Parse(xml);
+            XDocument xmlDoc = null;
+
+            try
+            {
+                // remove html-whitespace, which causes following error:
+                // "Reference to undeclared entity 'nbsp'. Line 89, position 17."
+                xml = xml.Replace("&nbsp;","");
+                xmlDoc = XDocument.Parse(xml);
+            }
+            catch (Exception)
+            {
+                // generate no data if the xml could not be parsed.
+                return;
+            }
 
             Days.Clear();
 
