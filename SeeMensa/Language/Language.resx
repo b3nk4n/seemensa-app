@@ -162,7 +162,7 @@
     <comment>Global</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>3.5</value>
+    <value>3.6</value>
     <comment>General</comment>
   </data>
   <data name="BackgroundTask" xml:space="preserve">
@@ -347,6 +347,10 @@ Showing us some love on the store helps us to continue to work on the app and ma
   <data name="RatingYesText" xml:space="preserve">
     <value>rate 5 stars</value>
     <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>en</value>
+    <comment>General</comment>
   </data>
   <data name="Review" xml:space="preserve">
     <value>Please tap here to review this App!</value>

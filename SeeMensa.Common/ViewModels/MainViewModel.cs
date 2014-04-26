@@ -16,6 +16,8 @@ using System.Xml.Linq;
 using System.IO;
 using System.Globalization;
 using PhoneKit.Framework.Core.MVVM;
+using BugSense.Core.Model;
+using BugSense;
 
 namespace SeeMensa.Common.ViewModels
 {
@@ -169,9 +171,14 @@ namespace SeeMensa.Common.ViewModels
                 xml = xml.Replace("&nbsp;","");
                 xmlDoc = XDocument.Parse(xml);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // generate no data if the xml could not be parsed.
+                if (xml != null)
+                {
+                    BugSenseLogResult logResult = BugSenseHandler.Instance.LogException(ex, "xml", xml);
+                    Debug.WriteLine("BugSense result: {0}", logResult.ResultState.ToString());
+                }
                 return;
             }
 

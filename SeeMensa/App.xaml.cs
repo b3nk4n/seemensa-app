@@ -23,6 +23,8 @@ using SeeMensa.Common.ViewModels;
 using SeeMensa.Common;
 using SeeMensa.Common.Controls;
 using PhoneKit.Framework.Support;
+using BugSense;
+using BugSense.Core.Model;
 
 namespace SeeMensa
 {
@@ -41,8 +43,8 @@ namespace SeeMensa
         /// </summary>
         public App()
         {
-            // Global handler for uncaught exceptions. 
-            UnhandledException += Application_UnhandledException;
+            // Initialize BugSense
+            BugSenseHandler.Instance.InitAndStartSession(new ExceptionManager(Current), RootFrame, "e0151f5b");
 
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)
@@ -75,8 +77,6 @@ namespace SeeMensa
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            FeedbackManager.Instance.Launching();
-
             load(false);
         }
 
@@ -113,25 +113,12 @@ namespace SeeMensa
         // Code to execute if a navigation fails
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            ErrorReportingManager.Instance.Save(e.Exception);
+            ErrorReportingManager.Instance.Save(e.Exception, Language.Language.ApplicationVersion, Language.Language.ResourceLanguage);
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 // A navigation has failed; break into the debugger
                 System.Diagnostics.Debugger.Break();
-            }
-        }
-
-        // Code to execute on Unhandled Exceptions
-        private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
-        {
-            ErrorReportingManager.Instance.Save(e.ExceptionObject);
-
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                // An unhandled exception has occurred; break into the debugger
-                System.Diagnostics.Debugger.Break();
-                // REMARK: Sometimes crashes when debugger is attached. But works fine in live mode. idky.
             }
         }
 

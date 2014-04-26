@@ -66,8 +66,8 @@ namespace SeeMensa.Common.LiveTile
                             day.Meals[i].Category,
                             day.Meals[i].Title,
                             MainViewModel.Instance.CurrentMensaItem.ImageUri.OriginalString));
-                    images.Add(StorageHelper.SaveJpeg(
-                        LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile{0}.jpeg", i), image));
+                    images.Add(StorageHelper.SavePng(
+                        LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile{0}.png", i), image));
                 }
             }
 

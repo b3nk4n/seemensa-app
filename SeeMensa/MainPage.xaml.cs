@@ -25,8 +25,16 @@ namespace SeeMensa
         public MainPage()
         {
             InitializeComponent();
-            
-            this.Loaded += new RoutedEventHandler(MainPage_Loaded);
+
+            // register startup actions
+            StartupActionManager.Instance.Register(5, ActionExecutionRule.Equals, () =>
+            {
+                FeedbackManager.Instance.StartFirst();
+            });
+            StartupActionManager.Instance.Register(10, ActionExecutionRule.Equals, () =>
+            {
+                FeedbackManager.Instance.StartSecond();
+            });
 
             _client = new WebClient();
 
@@ -118,44 +126,8 @@ namespace SeeMensa
             {
                 this.refresh();
             }
-        }
 
-        /// <summary>
-        /// Load data for the ViewModel Items.
-        /// </summary>
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            /*if (!string.IsNullOrEmpty(MainViewModel.Instance.Xml))
-            {
-                DateTime now = DateTime.Now;
-                DateTime lastUpdate = MainViewModel.Instance.LastUpdate;
-
-                TimeSpan delay = now.Subtract(lastUpdate);
-
-                if (delay.TotalDays >= 7)
-                {
-                    this.refresh();
-                }
-                else
-                {
-                    this.updatePanaroamaControl(MainViewModel.Instance.Xml);
-
-                    this.DataContext = MainViewModel.Instance;
-
-                    // Sets the default/current item (new in Version 1.3)
-                    if (MainViewModel.Instance.PanoramaIndex >= 0 &&
-                        MainViewModel.Instance.PanoramaIndex < panMeals.Items.Count)
-                    {
-                        panMeals.DefaultItem = panMeals.Items[MainViewModel.Instance.PanoramaIndex];
-                    }
-
-                    this.updateAppBar();
-                }
-            }
-            else
-            {
-                this.refresh();
-            }*/
+            StartupActionManager.Instance.Fire();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
