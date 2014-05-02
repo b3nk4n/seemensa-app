@@ -20,6 +20,8 @@ namespace SeeMensa.Controls
             RateAndReviewText = SeeMensa.Language.Language.RateAndReview;
             MoreAppsText = SeeMensa.Language.Language.MoreApps;
             MoreAppsSearchTerms = "Benjamin Sautermeister";
+
+            ContributorsListVisibility = System.Windows.Visibility.Collapsed;
         }
     }
 }

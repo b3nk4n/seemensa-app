@@ -162,7 +162,7 @@
     <comment>Global</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>3.6</value>
+    <value>3.6.1</value>
     <comment>General</comment>
   </data>
   <data name="BackgroundTask" xml:space="preserve">

@@ -145,9 +145,6 @@
     <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Converters\DayConverter.cs" />
     <Compile Include="Converters\TimeRangeConverter.cs" />
-    <Compile Include="HelpPage.xaml.cs">
-      <DependentUpon>HelpPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="InAppPurchases\ProductItem.cs" />
     <Compile Include="InAppStorePage.xaml.cs">
       <DependentUpon>InAppStorePage.xaml</DependentUpon>
@@ -182,10 +179,6 @@
     <Page Include="Controls\MealTypeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="HelpPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InAppStorePage.xaml">
       <SubType>Designer</SubType>

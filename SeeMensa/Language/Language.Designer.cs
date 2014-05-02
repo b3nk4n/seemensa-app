@@ -160,7 +160,7 @@ namespace SeeMensa.Language {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 3.6 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 3.6.1 ähnelt.
         /// </summary>
         public static string ApplicationVersion {
             get {

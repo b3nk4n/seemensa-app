@@ -35,8 +35,6 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
     <phone:PhoneApplicationPage.Resources>
-        <!-- Language -->
-        <language:LocalizedStrings x:Key="LocalizedString"/>
         <!-- Converters -->
         <converters:DayConverter x:Key="dayConverter"/>
         <converters:DateConverter x:Key="dateConverter"/>

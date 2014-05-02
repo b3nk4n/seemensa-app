@@ -38,11 +38,6 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
-    
-    <phone:PhoneApplicationPage.Resources>
-        <!-- Language -->
-        <language:LocalizedStrings x:Key="LocalizedString"/>
-    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -53,22 +48,22 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="{Binding Path=LocalizedString.SettingsTitle,Source={StaticResource LocalizedString}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="{Binding Path=LocalizedString.SettingsTitle,Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel >
-                <TextBlock Margin="12,0,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=LocalizedString.Canteen,Source={StaticResource LocalizedString}}" />
+                <TextBlock Margin="12,0,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=LocalizedString.Canteen,Source={StaticResource LocalizedStrings}}" />
                 <toolkit:ListPicker Grid.Row="1" Name="lpMensas" ItemsSource="{Binding MensaItems}" SelectionChanged="lpMensas_SelectionChanged" />
-                <TextBlock Margin="12,24,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=LocalizedString.BackgroundTask,Source={StaticResource LocalizedString}}" />
+                <TextBlock Margin="12,24,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=LocalizedString.BackgroundTask,Source={StaticResource LocalizedStrings}}" />
                 <toolkit:ToggleSwitch x:Name="BackgroundAgentToggle" Margin="0,-18,0,0"/>
-                <TextBlock Margin="12,0,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=LocalizedString.Prices,Source={StaticResource LocalizedString}}"/>
-                <RadioButton Content="{Binding Path=LocalizedString.Student,Source={StaticResource LocalizedString}}" Height="72" Name="rbStudent" Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Student"/>
-                <RadioButton Content="{Binding Path=LocalizedString.Guest,Source={StaticResource LocalizedString}}" Height="72" Name="rbGuest"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Guest"/>
-                <RadioButton Content="{Binding Path=LocalizedString.Employee,Source={StaticResource LocalizedString}}" Height="72" Name="rbEmployee"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Employee"/>
-                <RadioButton Content="{Binding Path=LocalizedString.Pupil,Source={StaticResource LocalizedString}}" Height="72" Name="rbPupil"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Pupil"/>
+                <TextBlock Margin="12,0,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=LocalizedString.Prices,Source={StaticResource LocalizedStrings}}"/>
+                <RadioButton Content="{Binding Path=LocalizedString.Student,Source={StaticResource LocalizedStrings}}" Height="72" Name="rbStudent" Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Student"/>
+                <RadioButton Content="{Binding Path=LocalizedString.Guest,Source={StaticResource LocalizedStrings}}" Height="72" Name="rbGuest"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Guest"/>
+                <RadioButton Content="{Binding Path=LocalizedString.Employee,Source={StaticResource LocalizedStrings}}" Height="72" Name="rbEmployee"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Employee"/>
+                <RadioButton Content="{Binding Path=LocalizedString.Pupil,Source={StaticResource LocalizedStrings}}" Height="72" Name="rbPupil"  Width="250" HorizontalAlignment="Left" Checked="PriceChecked" Tag="Pupil"/>
             </StackPanel>  
         </Grid>
     </Grid>

@@ -40,8 +40,6 @@
     </toolkit:TransitionService.NavigationOutTransition>
     
     <phone:PhoneApplicationPage.Resources>
-        <!-- Language -->
-        <language:LocalizedStrings x:Key="LocalizedString"/>
         <!-- Converters -->
         <converter:TimeRangeConverter x:Key="timeRangeConverter"/>
     </phone:PhoneApplicationPage.Resources>
@@ -55,8 +53,8 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="{Binding Path=LocalizedString.MensaInfoTitle,Source={StaticResource LocalizedString}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{Binding Path=LocalizedString.ApplicationTitle,Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="{Binding Path=LocalizedString.MensaInfoTitle,Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -65,7 +63,7 @@
                 <TextBlock Text="{Binding CurrentMensaName}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextWrapping="Wrap"/>
                 
                 <StackPanel Margin="0,35,0,0" DataContext="{Binding CurrentMensaItem}">
-                    <TextBlock Text="{Binding Path=LocalizedString.Address,Source={StaticResource LocalizedString}}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                    <TextBlock Text="{Binding Path=LocalizedString.Address,Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextSubtleStyle}"/>
                     <StackPanel Margin="0,10,0,0">
                         <TextBlock Text="{Binding Address1}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap"/>
                         <TextBlock Text="{Binding Address2}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap"/>
