@@ -50,22 +50,22 @@ namespace SeeMensa.Common.ViewModels
         /// <summary>
         /// The student price.
         /// </summary>
-        private string _preis1;
+        private string _preis1 = string.Empty;
 
         /// <summary>
         /// The employee price.
         /// </summary>
-        private string _preis2;
+        private string _preis2 = string.Empty;
 
         /// <summary>
         /// The guest price
         /// </summary>
-        private string _preis3;
+        private string _preis3 = string.Empty;
 
         /// <summary>
         /// The pupil price.
         /// </summary>
-        private string _preis4;
+        private string _preis4 = string.Empty;
 
         /// <summary>
         /// The unit of the meal.
@@ -92,10 +92,16 @@ namespace SeeMensa.Common.ViewModels
             _description = xmlMeal.Element("description").Value;
             _kennzeichnungen = xmlMeal.Element("kennzeichnungen").Value;
             _beilagen = xmlMeal.Element("beilagen").Value;
-            _preis1 = xmlMeal.Element("preis1").Value;
-            _preis2 = xmlMeal.Element("preis2").Value;
-            _preis3 = xmlMeal.Element("preis3").Value;
-            _preis4 = xmlMeal.Element("preis4").Value;
+
+            if (xmlMeal.Element("preis1") != null)
+                _preis1 = xmlMeal.Element("preis1").Value;
+            if (xmlMeal.Element("preis2") != null)
+                _preis2 = xmlMeal.Element("preis2").Value;
+            if (xmlMeal.Element("preis3") != null)
+                _preis3 = xmlMeal.Element("preis3").Value;
+            if (xmlMeal.Element("preis4") != null)
+                _preis4 = xmlMeal.Element("preis4").Value;
+
             _einheit = xmlMeal.Element("einheit").Value;
 
             // Replace tasg in title (= meals description)
