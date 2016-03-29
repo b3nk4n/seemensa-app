@@ -87,11 +87,16 @@ namespace SeeMensa.Common.ViewModels
         /// <param name="xmlMeal">The Meal as ea XML Element.</param>
         public MealViewModel(XElement xmlMeal)
         {
-            _category = xmlMeal.Element("category").Value;
-            _title = xmlMeal.Element("title").Value;
-            _description = xmlMeal.Element("description").Value;
-            _kennzeichnungen = xmlMeal.Element("kennzeichnungen").Value;
-            _beilagen = xmlMeal.Element("beilagen").Value;
+            if (xmlMeal.Element("category") != null)
+                _category = xmlMeal.Element("category").Value;
+            if (xmlMeal.Element("title") != null)
+                _title = xmlMeal.Element("title").Value;
+            if (xmlMeal.Element("description") != null)
+                _description = xmlMeal.Element("description").Value;
+            if (xmlMeal.Element("kennzeichnungen") != null)
+                _kennzeichnungen = xmlMeal.Element("kennzeichnungen").Value;
+            if (xmlMeal.Element("beilagen") != null)
+                _beilagen = xmlMeal.Element("beilagen").Value;
 
             if (xmlMeal.Element("preis1") != null)
                 _preis1 = xmlMeal.Element("preis1").Value;
@@ -102,7 +107,8 @@ namespace SeeMensa.Common.ViewModels
             if (xmlMeal.Element("preis4") != null)
                 _preis4 = xmlMeal.Element("preis4").Value;
 
-            _einheit = xmlMeal.Element("einheit").Value;
+            if (xmlMeal.Element("einheit") != null)
+                _einheit = xmlMeal.Element("einheit").Value;
 
             // Replace tasg in title (= meals description)
             if (!string.IsNullOrEmpty(_kennzeichnungen))
@@ -112,7 +118,7 @@ namespace SeeMensa.Common.ViewModels
 
             // Check title and pricing
             _title = _title.Replace("&quot;", "\"");
-            if (_preis1.Equals("0,00"))
+            if (_preis1 != null && _preis1.Equals("0,00"))
             {
                 string end = _title.Substring(_title.Length - 4);
                 float res;
